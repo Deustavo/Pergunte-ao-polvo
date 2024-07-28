@@ -52,10 +52,11 @@
                 disabled
                 type="text"
                 v-model="selectedOption"
+                style="text-align: center;"
             >
         </div>
 
-        <button type="submit">
+        <button type="submit" :disabled="loading">
             {{ !!selectedOption ? "Tentar de novo" : "Adivinhar" }}
         </button>
     </form>
@@ -125,11 +126,5 @@
 
   button:hover {
     background-color: #c52266;
-  }
-
-  @media screen and (min-width: 768px) {
-    form {
-        width: 50%;
-    }
   }
 </style>

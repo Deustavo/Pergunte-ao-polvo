@@ -24,8 +24,8 @@ export default {
 
   body {
     background-color: rgb(255, 255, 255);
-    width: 100vw;
-    margin: 40px 0px 80px 0px ;
+    width: 96vw;
+    margin: 40px 2vw 80px 2vw;
 
     font-family: "Roboto", sans-serif;
     font-weight: 300;
@@ -36,5 +36,12 @@ export default {
     color: #000;
     font-size: 2em;
     text-align: center;
+  }
+
+  .app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 </style>

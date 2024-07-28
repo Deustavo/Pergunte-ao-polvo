@@ -6,14 +6,13 @@
     />
 </template>
 
-<style>
+<style scoped>
     .polvo-img {
-        display: block;
-        margin: 0 auto;
+        margin: 0 0 0 28px;
         width: 400px;
     }
 
-    @media screen and (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
         .polvo-img {
             width: 90vw;
         }
