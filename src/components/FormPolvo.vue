@@ -22,14 +22,27 @@
   <div class="app-form">
     <form @submit.prevent="submitForm">
         <div class="app-options">
-            <input
-                v-for="option in Options.list.value"
-                type="text"
-                id="option.name"
-                v-model="option.value"
-                :placeholder="option.placeholder"
-                required
+            <div
+                v-for="(option, index) in Options.list.value"
+                style="width: 100%; display: flex; justify-content: center;"
             >
+                <input
+                    type="text"
+                    id="option.name"
+                    v-model="option.value"
+                    :placeholder="option.placeholder"
+                    required
+                >
+
+                <button
+                    v-if="index > 1"
+                    class="button--outline remove-option"
+                    type="button"
+                    @click="Options.removeOption(option)"
+                >
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
 
             <button
                 class="button--outline"
@@ -42,7 +55,7 @@
         </div>
 
         <div v-if="loading">
-            <p style="margin: 20px 0 48px 0;">Estou pensando...</p>
+            <p style="margin: 26px 0 52px 0;">Estou pensando...</p>
         </div>
 
         <div
@@ -54,7 +67,6 @@
                 disabled
                 type="text"
                 v-model="selectedOption"
-                style="text-align: center;"
             >
         </div>
 
@@ -98,8 +110,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 94%;
+    width: 100%;
     margin-bottom: 20px;
+
+    input {
+        text-align: center;
+        padding: 10px 0px;
+    }
 
     b {
         margin-bottom: 10px;
@@ -112,7 +129,7 @@
   }
 
   input {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -144,5 +161,10 @@
 
   .button--outline:hover {
     color: #c52266;
+  }
+
+  .remove-option {
+    font-size: 24px;
+    margin-bottom: 12px;
   }
 </style>
