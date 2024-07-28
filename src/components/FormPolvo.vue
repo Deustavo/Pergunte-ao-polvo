@@ -1,8 +1,8 @@
 <script setup>
     import { ref } from 'vue';
+    import OptionsModel from '../models/options';
+    const Options = new OptionsModel();
 
-    const option1 = ref('');
-    const option2 = ref('');
     const selectedOption = ref('');
     const loading = ref(false);
 
@@ -12,8 +12,8 @@
 
         setTimeout(() => {
             loading.value = false;
-            const random = Math.floor(Math.random() * 2);
-            selectedOption.value = random === 0 ? option1.value : option2.value;
+            const randomIndex = Math.floor(Math.random() * Options.list.value.length);
+            selectedOption.value = Options.list.value[randomIndex].value;
         }, randomTime);
     }
 </script>
@@ -23,20 +23,22 @@
     <form @submit.prevent="submitForm">
         <div class="app-options">
             <input
+                v-for="option in Options.list.value"
                 type="text"
-                id="option1"
-                v-model="option1"
-                placeholder="Primeira opção"
+                id="option.name"
+                v-model="option.value"
+                :placeholder="option.placeholder"
                 required
             >
-            <p>vs.</p>
-            <input
-                type="text"
-                id="option2"
-                v-model="option2"
-                placeholder="Segunda opção"
-                required
+
+            <button
+                class="button--outline"
+                type="button"
+                @click="Options.addOption"
             >
+                <i class="fa-solid fa-circle-plus"></i>
+                Adicionar nova opção
+            </button>
         </div>
 
         <div v-if="loading">
@@ -56,7 +58,7 @@
             >
         </div>
 
-        <button type="submit" :disabled="loading">
+        <button class="button" type="submit" :disabled="loading">
             {{ !!selectedOption ? "Tentar de novo" : "Adivinhar" }}
         </button>
     </form>
@@ -81,9 +83,10 @@
 
   .app-options {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     width: 100%;
 
     p {
@@ -109,22 +112,37 @@
   }
 
   input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 12px;
   }
 
-  button {
+  .button {
     padding: 10px 40px;
+    margin-bottom: 24px;
     background-color: #cf417c;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all ease-in-out 300ms;
   }
 
-  button:hover {
+  .button:hover {
     background-color: #c52266;
+  }
+
+  .button--outline {
+    border: none;
+    background-color: transparent;
+    color: #cf417c;
+    margin-top: 4px;
+    cursor: pointer;
+  }
+
+  .button--outline:hover {
+    color: #c52266;
   }
 </style>

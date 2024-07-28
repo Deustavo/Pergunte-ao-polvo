@@ -30,6 +30,7 @@ export default {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
+    overflow-x: hidden;
   }
 
   h1 {
