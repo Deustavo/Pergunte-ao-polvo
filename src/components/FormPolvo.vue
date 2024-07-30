@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from 'vue';
+    import { computed, ref } from 'vue';
     import OptionsModel from '../models/options';
     const Options = new OptionsModel();
 
@@ -42,7 +42,7 @@
                   >
 
                   <button
-                      v-if="index > 1"
+                      v-if="index > 1 && index === Options.list.value.length - 1"
                       class="button--outline remove-option"
                       type="button"
                       @click="Options.removeOption(option)"
