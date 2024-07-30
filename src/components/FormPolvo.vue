@@ -38,6 +38,7 @@
                       id="option.name"
                       v-model="option.value"
                       :placeholder="option.placeholder"
+                      maxlength="50"
                       required
                   >
 
@@ -70,7 +71,7 @@
             v-if="!!selectedOption && !loading"
             class="app-result"
         >
-            <b>O polvo disse:</b>
+            <p>O polvo escolheu:</p>
             <input
                 disabled
                 type="text"
@@ -137,10 +138,8 @@
     input {
         text-align: center;
         padding: 10px 0px;
-    }
-
-    b {
-        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: bold;
     }
   }
 
