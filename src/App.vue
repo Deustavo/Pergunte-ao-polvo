@@ -15,6 +15,7 @@ export default {
   <div class="app-header">
     <PolvoImg />
     <h1>Pergunte ao Polvo!</h1>
+    <p class="app-header-description">Se precisar fazer uma escolha dificil, pergunte ao polvo!<br>Ele saberá a resposta.</p>
   </div>
   <AppFormPolvo />
 </template>
@@ -37,6 +38,7 @@ export default {
     color: #000;
     font-size: 2em;
     text-align: center;
+    margin-bottom: 0;
   }
 
   .app-header {
@@ -44,5 +46,10 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+
+  .app-header-description {
+    margin: 8px 0px;
+    text-align: center;
   }
 </style>

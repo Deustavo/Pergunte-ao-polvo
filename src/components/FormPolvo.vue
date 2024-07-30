@@ -24,24 +24,32 @@
         <div class="app-options">
             <div
                 v-for="(option, index) in Options.list.value"
-                style="width: 100%; display: flex; justify-content: center;"
+                class="app-option-container"
             >
-                <input
-                    type="text"
-                    id="option.name"
-                    v-model="option.value"
-                    :placeholder="option.placeholder"
-                    required
+                <p
+                  v-if="index > 0"
+                  style="margin-bottom: 8px;"
                 >
+                  vs.
+                </p>
+                <div class="app-option-input">
+                  <input
+                      type="text"
+                      id="option.name"
+                      v-model="option.value"
+                      :placeholder="option.placeholder"
+                      required
+                  >
 
-                <button
-                    v-if="index > 1"
-                    class="button--outline remove-option"
-                    type="button"
-                    @click="Options.removeOption(option)"
-                >
-                    <i class="fa-solid fa-circle-xmark"></i>
-                </button>
+                  <button
+                      v-if="index > 1"
+                      class="button--outline remove-option"
+                      type="button"
+                      @click="Options.removeOption(option)"
+                  >
+                      <i class="fa-solid fa-circle-xmark"></i>
+                  </button>
+                </div>
             </div>
 
             <button
@@ -71,7 +79,7 @@
         </div>
 
         <button class="button" type="submit" :disabled="loading">
-            {{ !!selectedOption ? "Tentar de novo" : "Adivinhar" }}
+            {{ !!selectedOption ? "Tentar de novo" : "Perguntar" }}
         </button>
     </form>
   </div>
@@ -106,6 +114,19 @@
     }
   }
 
+  .app-option-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-option-input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .app-result {
     display: flex;
     flex-direction: column;
@@ -133,7 +154,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .button {
@@ -165,6 +186,6 @@
 
   .remove-option {
     font-size: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 </style>
