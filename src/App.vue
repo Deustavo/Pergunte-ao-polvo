@@ -19,8 +19,8 @@ export default {
   </div>
   <AppFormPolvo />
   <footer>
-    <p>Desenvolvido por <a href="https://github.com/Deustavo">@Deustavo</a></p>
-    <p>♡ Dedicado a minha namorada ♡</p>
+    <p>Desenvolvido por <a href="https://github.com/Deustavo">deustavo</a></p>
+    <p>♡ Dedicado à moonjoume ♡</p>
   </footer>
 </template>
 
