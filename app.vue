@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <ImagePolvo />
-    <h1>Pergunte ao Polvo! TESTE</h1>
+    <h1>Pergunte ao Polvo!</h1>
     <p class="app-header-description">Se precisar fazer uma escolha dificil, pergunte ao polvo!<br>Ele saberá a resposta.</p>
   </header>
   <FormPolvo />
