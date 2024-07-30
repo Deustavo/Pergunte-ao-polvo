@@ -1,7 +1,7 @@
 <template>
     <img
         class="polvo-img"
-        src="@/assets/polvo.png"
+        src="@/assets/img/polvo.png"
         alt="Polvo"
     />
 </template>

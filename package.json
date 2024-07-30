@@ -13,5 +13,8 @@
     "nuxt": "^3.12.4",
     "nuxt-vercel-analytics": "^1.0.2",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
   }
 }
