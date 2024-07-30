@@ -27,4 +27,5 @@ export default defineNuxtConfig({
       ],
     },
   },
+  modules: ["nuxt-vercel-analytics"]
 });
