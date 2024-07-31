@@ -14,7 +14,24 @@
             loading.value = false;
             const randomIndex = Math.floor(Math.random() * Options.list.value.length);
             selectedOption.value = Options.list.value[randomIndex].value;
+            sendVercelTrack();
         }, randomTime);
+    }
+
+    const sendVercelTrack = (category, data) => {
+        let options = [];
+
+        Options.list.value.map((option) => {
+            options.push(option.value);
+        });
+
+        vercelTrack(
+          "Perguntas",
+          {
+            options: JSON.stringify(options),
+            selectedOption: selectedOption.value,
+          },
+        );
     }
 </script>
 
@@ -38,7 +55,7 @@
                       id="option.name"
                       v-model="option.value"
                       :placeholder="option.placeholder"
-                      maxlength="50"
+                      maxlength="100"
                       required
                   >
 
@@ -64,7 +81,7 @@
         </div>
 
         <div v-if="loading">
-            <p style="margin: 26px 0 52px 0;">Estou pensando...</p>
+            <p style="margin: 22px 0 52px 0;">Estou pensando...</p>
         </div>
 
         <div
@@ -72,11 +89,7 @@
             class="app-result"
         >
             <p>O polvo escolheu:</p>
-            <input
-                disabled
-                type="text"
-                v-model="selectedOption"
-            >
+            <p class="app-result-selectedOption">{{ selectedOption }}</p>
         </div>
 
         <button class="button" type="submit" :disabled="loading">
