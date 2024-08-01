@@ -45,7 +45,7 @@ form {
     flex-direction: column;
     padding: 4px;
     align-items: center;
-    max-width: 100%;
+    width: 92%;
     margin-bottom: 20px;
     word-break: break-all;
 
@@ -55,8 +55,9 @@ form {
         padding: 12px;
         font-size: 24px;
         font-weight: bold;
-        background-color: #f5deef;
+        background-color: #ece1e9;
         border-radius: 6px;
+        min-width: 100%;
     }
 }
 

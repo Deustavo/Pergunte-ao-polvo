@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       title: 'Pergunte ao polvo',
       meta: [
         {
-          name: 'description', content: 'Se você estiver indeciso para tomar alguma decisão, pergunte ao polvo.'
+          name: 'description', content: 'Se você estiver indeciso, pergunte ao polvo.'
         },
       ],
       link: [
@@ -19,6 +19,11 @@ export default defineNuxtConfig({
           integrity: 'sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==',
           crossorigin: 'anonymous',
           referrerpolicy: 'no-referrer',
+        },
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/favicon.ico',
         },
         {
           rel: 'manifest',

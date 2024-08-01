@@ -2,7 +2,8 @@
   <header class="app-header">
     <ImagePolvo />
     <h1>Pergunte ao Polvo!</h1>
-    <p class="app-header-description">Se precisar fazer uma escolha dificil, pergunte ao polvo!<br>Ele saberá a resposta.</p>
+    <p class="app-header-description">Se precisar fazer uma escolha difícil, pergunte ao polvo!<br>Ele saberá a resposta certa.</p>
+    <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
   </header>
   <FormPolvo />
   <footer>
@@ -19,7 +20,6 @@
     </a>
   </div>
 </template>
-
 
 <style>
   @import './assets/sass/app.scss';

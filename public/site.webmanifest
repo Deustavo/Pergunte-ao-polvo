@@ -1,6 +1,6 @@
 {
     "name":"Pergunte ao polvo",
-    "description":"Se você estiver indeciso para tomar alguma decisão, pergunte ao polvo.",
+    "description":"Se você estiver indeciso, pergunte ao polvo.",
     "short_name":"",
     "icons":[
         {
@@ -12,6 +12,26 @@
             "src":"/android-chrome-512x512.png",
             "sizes":"512x512",
             "type":"image/png"
+        },
+        {
+            "src":"/apple-touch-icon.png",
+            "sizes":"60x60",
+            "type":"image/png"
+        },
+        {
+            "src":"/favicon-16x16.png",
+            "sizes":"16x16",
+            "type":"image/png"
+        },
+        {
+            "src":"/favicon-32x32.png",
+            "sizes":"32x32",
+            "type":"image/png"
+        },
+        {
+            "src":"/favicon.ico",
+            "sizes":"16x16",
+            "type":"image/x-icon"
         }
     ],
     "theme_color":"#ffffff",
