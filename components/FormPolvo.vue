@@ -14,7 +14,7 @@
             loading.value = false;
             const randomIndex = Math.floor(Math.random() * Options.list.value.length);
             selectedOption.value = Options.list.value[randomIndex].value;
-            sendVercelTrack();
+            // sendVercelTrack();
         }, randomTime);
     }
 
