@@ -20,6 +20,7 @@
   </div>
 </template>
 
+
 <style>
   @import './assets/sass/app.scss';
 </style>
