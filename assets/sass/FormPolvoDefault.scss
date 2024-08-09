@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 form {
@@ -11,7 +11,7 @@ form {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 480px;
 }
 
 .app-options {
@@ -19,19 +19,22 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     width: 100%;
 
     p {
         margin: 0 10px;
+        font-size: 18px;
+        font-weight: bold;
     }
 }
 
 .app-option-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 
 .app-option-input {
@@ -47,17 +50,25 @@ form {
     align-items: center;
     width: 92%;
     margin-bottom: 20px;
-    word-break: break-all;
 
     &-selectedOption {
-        text-align: center;
         margin: 0;
-        padding: 12px;
+        padding: 16px;
         font-size: 24px;
-        font-weight: bold;
-        background-color: #ece1e9;
+        background-color: #fff;
         border-radius: 6px;
-        min-width: 100%;
+        width: calc(100% - 32px);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        word-break: keep-all;
+
+        b {
+            margin: 0px 8px;
+            width: calc(50% - 13px);
+            text-align: center;
+            word-break: break-word;
+        }
     }
 }
 
@@ -68,36 +79,39 @@ label {
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 12px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 8px;
+    font-size: 18px;
 }
 
 .button {
-    padding: 10px 40px;
-    margin-bottom: 24px;
-    background-color: #cf417c;
+    padding: 16px;
+    margin: 24px 0px ;
+    background-color: #D63F8C;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all ease-in-out 300ms;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
 
     &:hover {
-        background-color: #c52266;
+        background-color: #b61f6d;
     }
 }
 
 .button--outline {
     border: none;
     background-color: transparent;
-    color: #cf417c;
+    color: #D63F8C;
     margin-top: 4px;
     cursor: pointer;
 
     &:hover {
-        color: #c52266;
+        color: #b61f6d;
     }   
 }
 

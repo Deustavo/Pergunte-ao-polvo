@@ -100,5 +100,5 @@
 </template>
 
 <style scoped>
-@import '../assets/sass/FormPolvo.scss';
+@import '../assets/sass/FormPolvoMultiChoices.scss';
 </style>

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: #DFE8EF;
   width: 96vw;
   margin: 48px 2vw;
 
@@ -17,6 +17,7 @@ h1 {
   font-size: 2em;
   text-align: center;
   margin-bottom: 0;
+  font-weight: 400;
 }
 
 footer {
@@ -27,7 +28,7 @@ footer {
 
   p {
     margin: 4px;
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 
@@ -49,7 +50,7 @@ footer {
   right: 24px;
   
   .twitter-button {
-    background-color: #cf417c;
+    background-color: #D63F8C;
     color: #fff;
     border: none;
     border-radius: 40px;
@@ -59,7 +60,7 @@ footer {
     transition: background-color 0.3s;
     
     &:hover {
-      background-color: #c52266;
+      background-color: #b61f6d;
     }
   }
 }
