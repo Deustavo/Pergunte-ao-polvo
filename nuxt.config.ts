@@ -8,9 +8,12 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       title: 'Pergunte ao polvo',
       meta: [
-        {
-          name: 'description', content: 'Se você estiver indeciso, pergunte ao polvo.'
-        },
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'Se você estiver indeciso, pergunte ao polvo.' },
+        { hid: 'description', name: 'description', content: 'Pergunte ao Polvo! Se precisar fazer uma escolha difícil, pergunte ao polvo! Ele saberá a resposta certa.' },
+        { name: 'keywords', content: 'Pergunte ao Polvo, escolha difícil, decisão, diversão' },
+        { name: 'author', content: 'deustavo' }
       ],
       link: [
         {
@@ -32,5 +35,13 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["nuxt-vercel-analytics"]
+  modules: [
+    "nuxt-vercel-analytics",
+    "@nuxtjs/robots",
+    "@nuxtjs/sitemap"
+  ],
+  site: {
+    url: 'https://pergunteaopolvo.com/',
+    name: 'My Awesome Website'
+  },
 });
