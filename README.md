@@ -1,75 +1,17 @@
-# Nuxt 3 Minimal Starter
+# Pergunte ao polvo 🐙
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Sobre o projeto 🐙
 
-## Setup
+Esse projeto é uma replica de um antigo site conhecido como "Pergunte ao polvo".
 
-Make sure to install the dependencies:
+O Polvo pode te ajudar a tomar decisões dificeis. Caso esteja em duvida de uma escolha e não quer conviver com o peso de suas decisões, pergunte ao polvo.
 
-```bash
-# npm
-npm install
+Dedicado à moonjoume
 
-# pnpm
-pnpm install
+## Visite o site 🐙
 
-# yarn
-yarn install
+https://pergunteaopolvo.com/
 
-# bun
-bun install
-```
+## Nos siga no Xwitter 🐙
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+https://x.com/pergunteAoPolv0
