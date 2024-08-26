@@ -87,7 +87,7 @@ input {
 
 .button {
     padding: 16px;
-    margin: 24px 0px ;
+    margin: 8px 0px;
     background-color: #D63F8C;
     color: #fff;
     border: none;
@@ -107,12 +107,14 @@ input {
     border: none;
     background-color: transparent;
     color: #D63F8C;
+    border: 1px solid #D63F8C;
     margin-top: 4px;
     cursor: pointer;
 
     &:hover {
-        color: #b61f6d;
-    }   
+        color: #fff;
+        background-color: #D63F8C;
+    }
 }
 
 .remove-option {

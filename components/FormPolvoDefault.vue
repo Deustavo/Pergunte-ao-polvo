@@ -47,9 +47,11 @@
                 </div>
             </div>
 
-            <button class="button" type="submit" :disabled="loading">
-                Adivinhar
-            </button>
+            <div style="margin: 40px 0px; width: 100%;">
+                <button class="button" type="submit" :disabled="loading">
+                    Perguntar
+                </button>
+            </div>
 
             <div v-if="loading">
                 <p style="margin: 22px 0 52px 0;">Estou pensando...</p>
@@ -58,7 +60,7 @@
 
         <!-- Exibe quando há resposta selecionada -->
         <div
-            v-if="!!selectedOption && !loading"
+            v-if="!!selectedOption"
             class="app-result"
         >
             <div class="app-result-selectedOption">
@@ -68,16 +70,30 @@
             <p>O polvo disse:</p>
             
             <div class="app-result-selectedOption">
-                <b style="width: 100%;">{{ selectedOption }}</b>
+                <div v-if="loading">
+                    <p style="margin: 0;">Estou pensando...</p>
+                </div>
+                <b style="width: 100%;" v-else>{{ selectedOption }}</b>
             </div>
 
-            <button
-                class="button"
-                type="button"
-                @click="selectedOption = ''"
-            >
-                Tentar de novo
-            </button>
+            <div style="margin: 40px 0px">
+                <button class="button button--outline" type="submit" :disabled="loading">
+                    Perguntar novamente
+                </button>
+
+                <button
+                    class="button"
+                    type="button"
+                    @click="() => {
+                        selectedOption = '';
+                        option1 = '';
+                        option2 = '';
+                    }"
+                    :disabled="loading"
+                >
+                    Fazer outra pergunta
+                </button>
+            </div>
         </div>
 
     </form>
