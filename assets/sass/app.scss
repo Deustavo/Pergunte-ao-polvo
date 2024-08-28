@@ -50,15 +50,20 @@ footer {
   right: 24px;
   
   .twitter-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #D63F8C;
     color: #fff;
     border: none;
     border-radius: 40px;
-    padding: 12px;
+    width: 48px;
+    height: 48px;
     font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     &:hover {
       background-color: #b61f6d;
     }

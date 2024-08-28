@@ -1,9 +1,12 @@
 <template>
-    <img
-        class="polvo-img"
-        src="@/assets/img/polvo.png"
-        alt="Polvo"
-    />
+    <div style="position: relative;">
+        <img
+            class="polvo-img"
+            src="@/assets/img/polvo2.png"
+            alt="Polvo"
+        />
+        <PolvoEyes />
+    </div>
 </template>
 
 <style scoped>
