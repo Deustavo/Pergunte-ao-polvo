@@ -67,7 +67,7 @@
                 <b>{{ option1 }}</b> vs. <b>{{ option2 }}</b>
             </div>
 
-            <p>O polvo disse:</p>
+            <p>O polvo escolheu:</p>
             
             <div class="app-result-selectedOption">
                 <div v-if="loading">
@@ -76,7 +76,7 @@
                 <b style="width: 100%;" v-else>{{ selectedOption }}</b>
             </div>
 
-            <div style="margin: 40px 0px">
+            <div style="margin: 40px 0px; width: 100%">
                 <button class="button button--outline" type="submit" :disabled="loading">
                     Perguntar novamente
                 </button>
