@@ -49,5 +49,12 @@
 </script>
   
 <style scoped>
-@import '../assets/sass/PolvoEyes.scss';
+    .polvo-eyes {
+        position: absolute;
+        width: 55%;
+        top: 35%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
 </style>

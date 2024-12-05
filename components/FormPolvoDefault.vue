@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
+    import { ref } from 'vue';
 
     const option1 = ref('');
     const option2 = ref('');
