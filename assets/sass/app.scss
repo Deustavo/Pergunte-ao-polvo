@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Mynerve&family=Roboto:wght@300;400&display=swap');
 
 * {
-  // font-family: "Roboto", sans-serif;
-  font-family: "Mynerve", cursive;
-  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  // font-family: "Mynerve", cursive;
+  // font-weight: bold;
 }
 
 .about-link {
@@ -21,6 +21,7 @@ body {
   margin: 48px 2vw;
   font-style: normal;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
 h1 {
