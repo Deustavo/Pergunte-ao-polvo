@@ -9,7 +9,7 @@
     <FormPolvoDefault />
     <!-- <FormPolvoMultiChoices /> -->
     <footer>
-      <p>Desenvolvido por <a href="https://github.com/Deustavo">Gustavo Andrade</a></p>
+      <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>
     </footer>
     <div class="floating-container">
