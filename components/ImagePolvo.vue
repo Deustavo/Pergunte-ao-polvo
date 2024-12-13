@@ -12,6 +12,8 @@
     import PolvoRealista from '@/assets/img/polvo-realista.png';
 
     const selectRandomImage = computed(() => {
+        let selectedImage = Polvo;
+
         const images = [
             PolvoDefault,
             PolvoBruxa,
@@ -23,13 +25,12 @@
             PolvoRealista,
         ];
 
-        const tenPercentChance = Math.random() < 0.2;
-        if (tenPercentChance) {
+        if (Math.random() < 0.4) {
             const indexImage = Math.floor(Math.random() * images.length);
-            return images[indexImage];
-        } else {
-            return Polvo;
+            selectedImage =  images[indexImage];
         }
+
+        return selectedImage;
     });
 </script>
 
