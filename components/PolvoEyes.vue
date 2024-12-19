@@ -51,10 +51,10 @@
 <style scoped>
     .polvo-eyes {
         position: absolute;
-        width: 55%;
+        width: 60%;
         top: 35%;
         left: 53%;
         transform: translate(-50%, -50%);
-        z-index: -1;
+        z-index: 1;
     }
 </style>
