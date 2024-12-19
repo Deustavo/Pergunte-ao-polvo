@@ -4,9 +4,25 @@
         v-for="i in 50"
         :key="i"
     ></div>
+    <img
+      class="footerSnow"
+      src="../assets/img/footerSnow.png"
+    />
 </template>
 
 <style lang="scss">
+ ::-webkit-scrollbar {
+    width: 0em;
+    height: 0em;
+}
+
+.footerSnow {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+}
+
 html, body {
   padding: 0;
   margin: 0;
@@ -14,7 +30,7 @@ html, body {
   height: 100vh;
   position: relative;
 //   overflow: hidden;
-  background: linear-gradient(#123, #111);
+  background: #3d437a !important;
   color: white;
 }
 
