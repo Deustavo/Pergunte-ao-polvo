@@ -11,6 +11,7 @@ html, body {
   padding: 0;
   margin: 0;
   width: 100vw;
+  height: 100vh;
   position: relative;
 //   overflow: hidden;
   background: linear-gradient(#123, #111);
