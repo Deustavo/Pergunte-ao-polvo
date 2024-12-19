@@ -21,10 +21,11 @@
         <i class="fa-brands fa-x-twitter"></i>
       </a>
     </div>
-  </template>
+    <SnowFall />
+</template>
   
-  <style>
-    @import '../assets/sass/app.scss';
-  </style>
+<style>
+  @import '../assets/sass/app.scss';
+</style>
   
   

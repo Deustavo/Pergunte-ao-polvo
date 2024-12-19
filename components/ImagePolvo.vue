@@ -10,7 +10,11 @@
     import PolvoNiver from '@/assets/img/polvo-niver.png';
     import PolvoPirata from '@/assets/img/polvo-pirata.png';
     import PolvoRealista from '@/assets/img/polvo-realista.png';
+    import PolvoNoel from '@/assets/img/polvo-noel.png';
 
+    /**
+     * Não utilizado durante o natal
+     */
     const selectRandomImage = computed(() => {
         let selectedImage = Polvo;
 
@@ -38,7 +42,7 @@
     <div class="polvo-bg">
         <img
             class="polvo-img"
-            :src="selectRandomImage"
+            :src="PolvoNoel"
             alt="Polvo"
         />
         <PolvoEyes />
@@ -53,10 +57,11 @@
     }
 
     .polvo-img {
-        margin: 0 0 0 16px;
+        margin: 0 0 0 12px;
         width: 100%;
         position: absolute;
         bottom: 0;
+        z-index: 2;
     }
 
     @media only screen and (max-width: 768px) {
