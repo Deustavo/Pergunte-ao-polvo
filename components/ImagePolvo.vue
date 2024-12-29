@@ -27,6 +27,7 @@
             PolvoNiver,
             PolvoPirata,
             PolvoRealista,
+            PolvoNoel,
         ];
 
         if (Math.random() < 0.4) {
@@ -42,7 +43,7 @@
     <div class="polvo-bg">
         <img
             class="polvo-img"
-            :src="PolvoNoel"
+            :src="selectRandomImage"
             alt="Polvo"
         />
         <PolvoEyes />

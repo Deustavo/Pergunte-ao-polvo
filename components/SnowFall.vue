@@ -14,7 +14,7 @@
  ::-webkit-scrollbar {
     width: 0em;
     height: 0em;
-}
+ }
 
 .footerSnow {
   position: fixed;
@@ -29,8 +29,8 @@ html, body {
   width: 100vw;
   height: 100vh;
   position: relative;
-//   overflow: hidden;
-  background: #3d437a !important;
+  // overflow: hidden;
+  // background: #3d437a !important;
   color: white;
 }
 

@@ -21,7 +21,8 @@
         <i class="fa-brands fa-x-twitter"></i>
       </a>
     </div>
-    <SnowFall />
+    <!-- Neve caindo -->
+    <!-- <SnowFall /> -->
 </template>
   
 <style>
