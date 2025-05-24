@@ -11,6 +11,9 @@
     import PolvoPirata from '@/assets/img/polvo-pirata.png';
     import PolvoRealista from '@/assets/img/polvo-realista.png';
     import PolvoNoel from '@/assets/img/polvo-noel.png';
+    import PolvoFred from '@/assets/img/polvo-fred.png';
+    import PolvoAbobora from '@/assets/img/polvo-abobora.png';
+    import PolvoFrank from '@/assets/img/polvo-frank.png';
 
     /**
      * Não utilizado durante o natal
@@ -28,6 +31,9 @@
             PolvoPirata,
             PolvoRealista,
             PolvoNoel,
+            PolvoFred,
+            PolvoAbobora,
+            PolvoFrank,
         ];
 
         if (Math.random() < 0.4) {
