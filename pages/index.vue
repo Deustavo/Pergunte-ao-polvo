@@ -1,4 +1,22 @@
+<script setup>
+import Settings from '@/settings';
+
+const { getTheme, toggleTheme } = Settings();
+
+const themeIcon = computed(() => {
+  return getTheme.value === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+});
+
+watchEffect(() => {
+  if (process.client) {
+    document.body.classList.remove('light-theme', 'dark-theme');
+    document.body.classList.add(`${getTheme.value}-theme`);
+  }
+});
+</script>
+
 <template>
+  <div>
     <header class="app-header">
       <ImagePolvo />
       <h1>Pergunte ao Polvo!</h1>
@@ -12,17 +30,19 @@
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>
     </footer>
+
     <div class="floating-container">
-      <a
-        class="twitter-button"
-        href="https://x.com/pergunteAoPolv0"
-        target="_blank"
+      <button
+        class="theme-button"
+        @click="toggleTheme"
       >
-        <i class="fa-brands fa-x-twitter"></i>
-      </a>
+        <i :class="themeIcon" />
+      </button>
     </div>
-    <!-- Neve caindo -->
-    <!-- <SnowFall /> -->
+  </div>
+
+  <!-- Neve caindo -->
+  <!-- <SnowFall /> -->
 </template>
   
 <style>

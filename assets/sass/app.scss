@@ -15,6 +15,15 @@
   }
 }
 
+.light-theme {
+  background-color: #DFE8EF;
+}
+
+.dark-theme {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
 body {
   background-color: #DFE8EF;
   width: 96vw;
@@ -22,6 +31,7 @@ body {
   font-style: normal;
   overflow-x: hidden;
   font-weight: 400;
+  transition: background-color 0.3s ease;
 }
 
 h1 {
@@ -57,11 +67,11 @@ footer {
 
 .floating-container {
   position: fixed;
-  bottom: 36px;
-  right: 24px;
+  top: 16px;
+  right: 16px;
   z-index: 10;
   
-  .twitter-button {
+  .theme-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,9 +79,9 @@ footer {
     color: #fff;
     border: none;
     border-radius: 40px;
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
     text-decoration: none;
