@@ -79,25 +79,32 @@ input {
     margin-bottom: 24px;
     background-color: #D63F8C;
     color: #fff;
-    border: none;
+    border: 2px solid #D63F8C;
     border-radius: 5px;
     cursor: pointer;
     transition: all ease-in-out 300ms;
 
     &:hover {
         background-color: #b61f6d;
+        border-color: #b61f6d;
     }
 }
 
 .button--outline {
-    border: none;
     background-color: transparent;
     color: #D63F8C;
+    border: 2px solid #D63F8C;
+    border-radius: 5px;
     margin-top: 4px;
     cursor: pointer;
+    padding: 8px 38px;
+    font-weight: bold;
+    transition: all ease-in-out 300ms;
 
     &:hover {
-        color: #b61f6d;
+        color: #fff;
+        background-color: #D63F8C;
+        border-color: #D63F8C;
     }   
 }
 

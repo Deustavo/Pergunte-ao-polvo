@@ -91,7 +91,7 @@ input {
     margin: 8px 0px;
     background-color: #D63F8C;
     color: #fff;
-    border: none;
+    border: 2px solid #D63F8C;
     border-radius: 5px;
     cursor: pointer;
     transition: all ease-in-out 300ms;
@@ -101,20 +101,27 @@ input {
 
     &:hover {
         background-color: #b61f6d;
+        border-color: #b61f6d;
     }
 }
 
 .button--outline {
-    border: none;
     background-color: transparent;
     color: #D63F8C;
-    border: 1px solid #D63F8C;
+    border: 2px solid #D63F8C;
+    border-radius: 5px;
     margin-top: 4px;
     cursor: pointer;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    transition: all ease-in-out 300ms;
 
     &:hover {
         color: #fff;
         background-color: #D63F8C;
+        border-color: #D63F8C;
     }
 }
 

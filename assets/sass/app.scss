@@ -22,6 +22,79 @@
 .dark-theme {
   background-color: #121212;
   color: #f1f1f1;
+
+  // Inputs mais escuros no tema escuro
+  input {
+    background-color: #2a2a2a;
+    border: 1px solid #404040;
+    color: #f1f1f1;
+
+    &:focus {
+      border-color: #D63F8C;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #a0a0a0;
+    }
+  }
+
+  // Botões mais escuros no tema escuro com borda rosa
+  .button {
+    background-color: #1a1a1a;
+    border: 2px solid #D63F8C;
+    color: #f1f1f1;
+
+    &:hover {
+      background-color: #2a2a2a;
+      border-color: #b61f6d;
+    }
+  }
+
+  .button--outline {
+    background-color: transparent;
+    border: 2px solid #D63F8C;
+    color: #D63F8C;
+
+    &:hover {
+      background-color: #1a1a1a;
+      border-color: #D63F8C;
+      color: #f1f1f1;
+    }
+  }
+
+  // Botão de tema mais escuro com borda rosa
+  .theme-button {
+    background-color: #2a2a2a;
+    border: 2px solid #D63F8C;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 3px 6px, rgba(255, 255, 255, 0.05) 0px 3px 6px;
+
+    &:hover {
+      background-color: #1a1a1a;
+      border-color: #b61f6d;
+    }
+  }
+
+  // Resultado selecionado mais escuro
+  .app-result-selectedOption {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #404040;
+  }
+
+  // Labels mais claros
+  label {
+    color: #f1f1f1;
+  }
+
+  // Links mais claros
+  .about-link {
+    color: #ff69b4 !important;
+
+    &:hover {
+      color: #D63F8C !important;
+    }
+  }
 }
 
 body {
@@ -32,6 +105,27 @@ body {
   overflow-x: hidden;
   font-weight: 400;
   transition: background-color 0.3s ease;
+
+  // Transições para elementos que mudam no tema escuro
+  input {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .button, .button--outline {
+    transition: all 0.3s ease;
+  }
+
+  .theme-button {
+    transition: all 0.3s ease;
+  }
+
+  .app-result-selectedOption {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  label, .about-link {
+    transition: color 0.3s ease;
+  }
 }
 
 h1 {
@@ -65,7 +159,7 @@ footer {
   text-align: center;
 }
 
-.floating-container {
+  .floating-container {
   position: fixed;
   top: 16px;
   right: 16px;
@@ -77,7 +171,7 @@ footer {
     align-items: center;
     background-color: #D63F8C;
     color: #fff;
-    border: none;
+    border: 2px solid #D63F8C;
     border-radius: 40px;
     width: 36px;
     height: 36px;
@@ -88,6 +182,7 @@ footer {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     &:hover {
       background-color: #b61f6d;
+      border-color: #b61f6d;
     }
   }
 }
