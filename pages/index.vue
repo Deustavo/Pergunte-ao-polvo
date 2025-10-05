@@ -31,8 +31,9 @@ watchEffect(() => {
         :src="Aboboras"
         alt="Aboboras"
       />
-      
+
       <ImagePolvo />
+
       <h1>Pergunte ao Polvo!</h1>
       <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao polvo?</NuxtLink> -->
       <!-- <p class="app-header-description">Se precisar fazer uma escolha difícil, pergunte ao polvo!<br>Ele saberá a resposta certa.</p> -->
