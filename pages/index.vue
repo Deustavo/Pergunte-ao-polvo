@@ -1,5 +1,7 @@
 <script setup>
 import Settings from '@/settings';
+import Teia from '@/assets/img/teia.png';
+import Aboboras from '@/assets/img/aboboras.png';
 
 const { getTheme, toggleTheme } = Settings();
 
@@ -18,6 +20,18 @@ watchEffect(() => {
 <template>
   <div>
     <header class="app-header">
+      <img
+        class="teia-img"
+        :src="Teia"
+        alt="Teia"
+      />
+      
+      <img
+        class="aboboras-img"
+        :src="Aboboras"
+        alt="Aboboras"
+      />
+      
       <ImagePolvo />
       <h1>Pergunte ao Polvo!</h1>
       <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao polvo?</NuxtLink> -->

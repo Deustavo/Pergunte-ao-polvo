@@ -159,7 +159,7 @@ footer {
   text-align: center;
 }
 
-  .floating-container {
+.floating-container {
   position: fixed;
   top: 16px;
   right: 16px;
@@ -185,4 +185,23 @@ footer {
       border-color: #b61f6d;
     }
   }
+}
+
+.teia-img {
+  position: fixed;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 16px;
+  z-index: 10;
+}
+
+.aboboras-img {
+  position: fixed;
+  bottom: -36px;
+  right: 0;
+  width: 100%;
+  max-width: 360px;
+  z-index: 10;
 }
