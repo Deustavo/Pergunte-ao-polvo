@@ -37,6 +37,7 @@ watchEffect(() => {
     <footer>
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>
+      <p><NuxtLink class="about-link" to="/add-shortcut">Adicionar à tela inicial</NuxtLink></p>
     </footer>
 
     <!-- <div class="floating-container">
