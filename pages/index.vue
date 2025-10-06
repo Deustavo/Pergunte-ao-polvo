@@ -57,7 +57,6 @@ watchEffect(() => {
     <footer>
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>
-      <p><a class="about-link" href="#" @click.prevent="openShortcutModal">Adicionar à tela inicial</a></p>
     </footer>
 
     <ShortcutModal
