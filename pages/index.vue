@@ -37,12 +37,9 @@ watchEffect(() => {
       <ImagePolvo />
 
       <h1>Pergunte ao Polvo!</h1>
-      <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao polvo?</NuxtLink> -->
-      <!-- <p class="app-header-description">Se precisar fazer uma escolha difícil, pergunte ao polvo!<br>Ele saberá a resposta certa.</p> -->
       <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
     </header>
     <FormPolvoDefault />
-    <!-- <FormPolvoMultiChoices /> -->
     <footer>
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>
@@ -53,19 +50,7 @@ watchEffect(() => {
       :is-open="isShortcutModalOpen"
       @close="closeShortcutModal"
     />
-
-    <!-- <div class="floating-container">
-      <button
-        class="theme-button"
-        @click="toggleTheme"
-      >
-        <i :class="themeIcon" />
-      </button>
-    </div> -->
   </div>
-
-  <!-- Neve caindo -->
-  <!-- <SnowFall /> -->
 </template>
   
 <style>
