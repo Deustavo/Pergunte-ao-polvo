@@ -3,10 +3,19 @@ import Settings from '@/settings';
 import Teia from '@/assets/img/teia.png';
 
 const { getTheme, toggleTheme } = Settings();
+const isShortcutModalOpen = ref(false);
 
 const themeIcon = computed(() => {
   return getTheme.value === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 });
+
+const openShortcutModal = () => {
+  isShortcutModalOpen.value = true;
+};
+
+const closeShortcutModal = () => {
+  isShortcutModalOpen.value = false;
+};
 
 watchEffect(() => {
   if (process.client) {
@@ -37,8 +46,13 @@ watchEffect(() => {
     <footer>
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>
-      <p><NuxtLink class="about-link" to="/add-shortcut">Adicionar à tela inicial</NuxtLink></p>
+      <p><a class="about-link" href="#" @click.prevent="openShortcutModal">Adicionar à tela inicial</a></p>
     </footer>
+
+    <ShortcutModal
+      :is-open="isShortcutModalOpen"
+      @close="closeShortcutModal"
+    />
 
     <!-- <div class="floating-container">
       <button
