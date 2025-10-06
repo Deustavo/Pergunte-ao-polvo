@@ -1,7 +1,6 @@
 <script setup>
 import Settings from '@/settings';
 import Teia from '@/assets/img/teia.png';
-import Aboboras from '@/assets/img/aboboras.png';
 
 const { getTheme, toggleTheme } = Settings();
 
@@ -25,12 +24,6 @@ watchEffect(() => {
         :src="Teia"
         alt="Teia"
       />
-      
-      <img
-        class="aboboras-img"
-        :src="Aboboras"
-        alt="Aboboras"
-      />
 
       <ImagePolvo />
 
@@ -46,14 +39,14 @@ watchEffect(() => {
       <p>♡ Dedicado à moonjoume ♡</p>
     </footer>
 
-    <div class="floating-container">
+    <!-- <div class="floating-container">
       <button
         class="theme-button"
         @click="toggleTheme"
       >
         <i :class="themeIcon" />
       </button>
-    </div>
+    </div> -->
   </div>
 
   <!-- Neve caindo -->

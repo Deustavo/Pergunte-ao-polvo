@@ -16,11 +16,11 @@
 }
 
 .light-theme {
-  background-color: #DFE8EF;
+  background-color: rgba(223, 232, 239, 0.85);
 }
 
 .dark-theme {
-  background-color: #121212;
+  background-color: rgba(18, 18, 18, 0.85);
   color: #f1f1f1;
 
   // Inputs mais escuros no tema escuro
@@ -98,7 +98,8 @@
 }
 
 body {
-  background-color: #DFE8EF;
+  background: url('~/assets/img/halloween-background.jpg') no-repeat center center fixed;
+  background-size: cover;
   width: 96vw;
   margin: 48px 2vw;
   font-style: normal;
