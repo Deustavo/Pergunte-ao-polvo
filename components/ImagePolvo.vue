@@ -7,6 +7,7 @@
     import PolvoFred from '@/assets/img/polvo-fred.png';
     import PolvoAbobora from '@/assets/img/polvo-abobora.png';
     import PolvoFrank from '@/assets/img/polvo-frank.png';
+    import PolvoFantasma from '@/assets/img/polvo-fantasma.png';
 
     /**
      * Não utilizado durante o natal
@@ -20,6 +21,7 @@
             PolvoFred,
             PolvoAbobora,
             PolvoFrank,
+            PolvoFantasma,
         ];
         
         const indexImage = Math.floor(Math.random() * images.length);
