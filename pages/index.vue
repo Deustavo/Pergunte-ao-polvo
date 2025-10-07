@@ -112,10 +112,10 @@ watchEffect(() => {
 
 .install-tooltip {
   position: absolute;
-  bottom: calc(100% + 15px);
+  bottom: calc(100% + 12px);
   right: 0;
-  background-color: #D63F8C;
-  color: white;
+  background-color: white;
+  color: #D63F8C;
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -124,13 +124,13 @@ watchEffect(() => {
   
   .tooltip-arrow {
     position: absolute;
-    bottom: -8px;
+    bottom: -7px;
     right: 24px;
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 8px solid #D63F8C;
+    border-top: 8px solid white;
   }
 }
 
