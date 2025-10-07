@@ -157,6 +157,7 @@ const closeModal = () => {
 
   &:hover {
     background-color: color.scale(#D63F8C, $lightness: -5%);
+    color: #fff;
   }
 
   &:active {
