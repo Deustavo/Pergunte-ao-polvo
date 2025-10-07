@@ -5,14 +5,30 @@ import Teia from '@/assets/img/teia.png';
 const { getTheme, toggleTheme } = Settings();
 const isShortcutModalOpen = ref(false);
 const isMobileDevice = ref(false);
+const showTooltip = ref(false);
 
 const themeIcon = computed(() => {
   return getTheme.value === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 });
 
+const checkAndShowTooltip = () => {
+  if (process.client) {
+    const hasSeenTooltip = localStorage.getItem('hasSeenInstallTooltip');
+    if (!hasSeenTooltip && isMobileDevice.value) {
+      showTooltip.value = true;
+      localStorage.setItem('hasSeenInstallTooltip', 'true');
+      // Auto-hide tooltip after 3 seconds
+      setTimeout(() => {
+        showTooltip.value = false;
+      }, 3000);
+    }
+  }
+};
+
 onMounted(() => {
   const checkMobile = () => {
     isMobileDevice.value = window.innerWidth <= 768;
+    checkAndShowTooltip();
   };
   
   checkMobile();
@@ -64,24 +80,80 @@ watchEffect(() => {
       @close="closeShortcutModal"
     />
 
-    <button 
-      v-if="isMobileDevice"
-      class="floating-shortcut-button"
-      @click="openShortcutModal"
-      aria-label="Adicionar à tela inicial"
-    >
-      <i class="fas fa-mobile-alt"></i>
-    </button>
+    <div class="floating-shortcut-container">
+      <Transition name="tooltip">
+        <div v-if="showTooltip" class="install-tooltip">
+          Adicione o Polvo à sua tela inicial! 🐙
+          <div class="tooltip-arrow"></div>
+        </div>
+      </Transition>
+      
+      <button 
+        v-if="isMobileDevice"
+        class="floating-shortcut-button"
+        @click="openShortcutModal"
+        aria-label="Adicionar à tela inicial"
+      >
+        <i class="fas fa-mobile-alt"></i>
+      </button>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "sass:color";
 
-.floating-shortcut-button {
+.floating-shortcut-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 100;
+}
+
+.install-tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  right: 0;
+  background-color: #D63F8C;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
+  
+  .tooltip-arrow {
+    position: absolute;
+    bottom: -8px;
+    right: 24px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #D63F8C;
+  }
+}
+
+// Tooltip animations
+.tooltip-enter-active,
+.tooltip-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.tooltip-enter-from,
+.tooltip-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tooltip-enter-to,
+.tooltip-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating-shortcut-button {
+  position: relative;
   width: 56px;
   height: 56px;
   border-radius: 50%;
