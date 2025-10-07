@@ -4,14 +4,12 @@
       <div class="modal-content" @click.stop>
         <button class="close-button" @click="closeModal">×</button>
         
-        <h2>Adicione o Pergunte ao Polvo na sua tela inicial! :o</h2>
+        <h2>Adicione o Polvo na sua tela inicial! 🐙</h2>
         
         <div class="device-instructions">
           <section class="android-instructions">
             <h3>Para Android</h3>
             <ol>
-              <li>Abra o Chrome no seu dispositivo Android</li>
-              <li>Acesse pergunteaopolvo.com.br</li>
               <li>Toque no menu (três pontos) <span class="icon">⋮</span> no canto superior direito</li>
               <li>Selecione "Adicionar à tela inicial"</li>
             </ol>
@@ -20,12 +18,16 @@
           <section class="ios-instructions">
             <h3>Para iPhone</h3>
             <ol>
-              <li>Abra o Safari no seu iPhone</li>
-              <li>Acesse pergunteaopolvo.com.br</li>
               <li>Toque no ícone de compartilhar <span class="icon">⬆️</span> na parte inferior da tela</li>
               <li>Role para baixo e toque em "Adicionar à Tela de Início" <span class="icon">🏠</span></li>
             </ol>
           </section>
+        </div>
+
+        <div class="modal-actions">
+          <button class="close-modal-button" @click="closeModal">
+            Entendi!
+          </button>
         </div>
       </div>
     </div>
@@ -48,6 +50,8 @@ const closeModal = () => {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:color";
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -98,7 +102,7 @@ const closeModal = () => {
 
 .device-instructions {
   display: grid;
-  gap: 2rem;
+  gap: 1rem;
   
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -134,5 +138,29 @@ const closeModal = () => {
 
 .icon {
   font-size: 1.2em;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-modal-button {
+  background-color: #fff;
+  color: #D63F8C;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: color.scale(#D63F8C, $lightness: -5%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 </style>
