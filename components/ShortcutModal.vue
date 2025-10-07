@@ -14,9 +14,7 @@
               <li>Acesse pergunteaopolvo.com.br</li>
               <li>Toque no menu (três pontos) <span class="icon">⋮</span> no canto superior direito</li>
               <li>Selecione "Adicionar à tela inicial"</li>
-              <li>Toque em "Adicionar" para confirmar</li>
             </ol>
-            <p class="note">Nota: O processo pode variar ligeiramente dependendo da versão do Android e do Chrome.</p>
           </section>
 
           <section class="ios-instructions">
@@ -26,9 +24,7 @@
               <li>Acesse pergunteaopolvo.com.br</li>
               <li>Toque no ícone de compartilhar <span class="icon">⬆️</span> na parte inferior da tela</li>
               <li>Role para baixo e toque em "Adicionar à Tela de Início" <span class="icon">🏠</span></li>
-              <li>Confirme tocando em "Adicionar" no canto superior direito</li>
             </ol>
-            <p class="note">Nota: Este processo só funciona no navegador Safari.</p>
           </section>
         </div>
       </div>
