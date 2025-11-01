@@ -1,7 +1,6 @@
 <script setup>
-import Settings from '@/settings';
-
-const { getTheme, toggleTheme } = Settings();
+// @ts-ignore - Auto-imported by Nuxt
+const { getTheme, toggleTheme } = useTheme();
 const isShortcutModalOpen = ref(false);
 const isMobileDevice = ref(false);
 const showTooltip = ref(false);
@@ -45,13 +44,6 @@ const openShortcutModal = () => {
 const closeShortcutModal = () => {
   isShortcutModalOpen.value = false;
 };
-
-watchEffect(() => {
-  if (process.client) {
-    document.body.classList.remove('light-theme', 'dark-theme');
-    document.body.classList.add(`${getTheme.value}-theme`);
-  }
-});
 </script>
 
 <template>

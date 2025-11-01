@@ -10,10 +10,14 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Se você estiver indeciso, pergunte ao polvo.' },
-        { hid: 'description', name: 'description', content: 'Pergunte ao Polvo! Se precisar fazer uma escolha difícil, pergunte ao polvo! Ele saberá a resposta certa.' },
+        { name: 'description', content: 'Pergunte ao Polvo! Se precisar fazer uma escolha difícil, pergunte ao polvo! Ele saberá a resposta certa.' },
         { name: 'keywords', content: 'Pergunte ao Polvo, escolha difícil, decisão, diversão' },
         { name: 'author', content: 'deustavo' }
+      ],
+      script: [
+        {
+          innerHTML: '(function(){try{var t=localStorage.getItem("theme")||"light";document.documentElement.className=t+"-theme";}catch(e){}})();'
+        }
       ],
       link: [
         {
@@ -39,9 +43,5 @@ export default defineNuxtConfig({
     "nuxt-vercel-analytics",
     "@nuxtjs/robots",
     "@nuxtjs/sitemap"
-  ],
-  site: {
-    url: 'https://pergunteaopolvo.com/',
-    name: 'My Awesome Website'
-  },
+  ]
 });

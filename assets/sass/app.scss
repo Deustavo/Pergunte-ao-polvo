@@ -15,6 +15,17 @@
   }
 }
 
+html.light-theme,
+html.light-theme body {
+  background-color: #DFE8EF;
+}
+
+html.dark-theme,
+html.dark-theme body {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
 .light-theme {
   background-color: #DFE8EF;
 }
@@ -100,7 +111,9 @@
 body {
   background-color: #DFE8EF;
   width: 96vw;
+  height: calc(100vh - 96px);
   padding: 48px 2vw;
+  margin: 0;
   font-style: normal;
   overflow-x: hidden;
   font-weight: 400;
