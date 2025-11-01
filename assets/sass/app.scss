@@ -50,41 +50,8 @@ html.dark-theme body {
     }
   }
 
-  // Botões mais escuros no tema escuro com borda rosa
-  .button {
-    background-color: #1a1a1a;
-    border: 2px solid #D63F8C;
-    color: #f1f1f1;
-
-    &:hover {
-      background-color: #2a2a2a;
-      border-color: #b61f6d;
-    }
-  }
-
-  .button--outline {
-    background-color: transparent;
-    border: 2px solid #D63F8C;
-    color: #D63F8C;
-
-    &:hover {
-      background-color: #1a1a1a;
-      border-color: #D63F8C;
-      color: #f1f1f1;
-    }
-  }
-
-  // Botão de tema mais escuro com borda rosa
-  .theme-button {
-    background-color: #2a2a2a;
-    border: 2px solid #D63F8C;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 3px 6px, rgba(255, 255, 255, 0.05) 0px 3px 6px;
-
-    &:hover {
-      background-color: #1a1a1a;
-      border-color: #b61f6d;
-    }
-  }
+  // Botão de tema, buttons e inputs são aplicados via CSS inline no head do nuxt.config.ts
+  // Isso garante que os estilos sejam aplicados imediatamente sem flash
 
   // Resultado selecionado mais escuro
   .app-result-selectedOption {

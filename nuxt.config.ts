@@ -19,6 +19,25 @@ export default defineNuxtConfig({
           innerHTML: '(function(){try{var t=localStorage.getItem("theme")||"light";document.documentElement.className=t+"-theme";}catch(e){}})();'
         }
       ],
+      style: [
+        {
+          innerHTML: `
+            html.dark-theme .floating-container .theme-button{background-color:#2a2a2a!important;border:2px solid #D63F8C!important;box-shadow:rgba(255,255,255,0.1) 0px 3px 6px,rgba(255,255,255,0.05) 0px 3px 6px!important}
+            html.dark-theme .floating-container .theme-button:hover{background-color:#1a1a1a!important;border-color:#b61f6d!important}
+            html.dark-theme .button{background-color:#1a1a1a!important;border:2px solid #D63F8C!important;color:#f1f1f1!important}
+            html.dark-theme .button:hover{background-color:#2a2a2a!important;border-color:#b61f6d!important}
+            html.dark-theme .button--outline{background-color:transparent!important;border:2px solid #D63F8C!important;color:#D63F8C!important}
+            html.dark-theme .button--outline:hover{background-color:#1a1a1a!important;border-color:#D63F8C!important;color:#f1f1f1!important}
+            html.dark-theme input{background-color:#2a2a2a!important;border:1px solid #404040!important;color:#f1f1f1!important}
+            html.dark-theme input:focus{border-color:#D63F8C!important}
+            html.dark-theme input::placeholder{color:#a0a0a0!important}
+            html.dark-theme .app-result-selectedOption{background-color:#2a2a2a!important;color:#f1f1f1!important;border:1px solid #404040!important}
+            html.dark-theme label{color:#f1f1f1!important}
+            html.dark-theme .about-link{color:#ff69b4!important}
+            html.dark-theme .about-link:hover{color:#D63F8C!important}
+          `.replace(/\s+/g, ' ').trim()
+        }
+      ],
       link: [
         {
           rel: 'stylesheet',
