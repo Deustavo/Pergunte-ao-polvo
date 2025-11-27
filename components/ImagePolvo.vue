@@ -27,14 +27,19 @@
 </script>
 
 <template>
-    <div class="polvo-bg">
-        <img
-            class="polvo-img"
-            :src="selectRandomImage"
-            alt="Polvo"
-        />
-        <PolvoEyes />
-    </div>
+    <header class="app-header">
+        <div class="polvo-bg">
+            <img
+                class="polvo-img"
+                :src="selectRandomImage"
+                alt="Polvo"
+            />
+            <PolvoEyes />
+        </div>
+
+        <h1>Pergunte ao Polvo!</h1>
+        <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
+    </header>
 </template>
 
 <style scoped>
