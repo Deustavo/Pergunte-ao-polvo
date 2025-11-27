@@ -83,7 +83,7 @@
     .grinch-text {
         h1,
         .app-header-description {
-            color: #4CAF50;
+            color: #267129;
         }
     }
 
