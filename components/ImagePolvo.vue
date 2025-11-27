@@ -56,7 +56,7 @@
             </div>
 
             <template #fallback>
-                <div>
+                <div class="transparent-text">
                     <h1>Pergunte ao Polvo!</h1>
                     <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
                 </div>
@@ -84,6 +84,13 @@
         h1,
         .app-header-description {
             color: #4CAF50;
+        }
+    }
+
+    .transparent-text {
+        h1,
+        .app-header-description {
+            color: transparent;
         }
     }
 
