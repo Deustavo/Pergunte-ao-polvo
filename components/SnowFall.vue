@@ -26,18 +26,12 @@
 }
 
 html, body {
-  padding: 0;
   margin: 0;
-  width: 100vw;
   height: 100vh;
   position: relative;
   // overflow: hidden;
   // background: #3d437a !important;
   color: white;
-}
-
-body {
-  margin: 0px 2vw 48px 2vw !important;
 }
 
 .snowflake {
