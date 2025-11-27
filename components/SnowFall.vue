@@ -11,6 +11,8 @@
 </template>
 
 <style lang="scss">
+@use "sass:math";
+
  ::-webkit-scrollbar {
     width: 0em;
     height: 0em;
@@ -59,12 +61,12 @@ body {
 
 @for $i from 1 through 50 {
   .snowflake:nth-child(#{$i}) {
-    --size: #{random(5) * 0.2}vw;
-    --left-ini: #{random(20) - 10}vw;
-    --left-end: #{random(20) - 10}vw;
-    left: #{random(100)}vw;
-    animation: snowfall #{5 + random(10)}s linear infinite;
-    animation-delay: -#{random(10)}s;
+    --size: #{math.random(5) * 0.2}vw;
+    --left-ini: #{math.random(20) - 10}vw;
+    --left-end: #{math.random(20) - 10}vw;
+    left: #{math.random(100)}vw;
+    animation: snowfall #{5 + math.random(10)}s linear infinite;
+    animation-delay: -#{math.random(10)}s;
   }
 }
 

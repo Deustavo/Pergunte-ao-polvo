@@ -96,7 +96,7 @@ const closeShortcutModal = () => {
   </div>
 
   <!-- Neve caindo -->
-  <!-- <SnowFall /> -->
+  <SnowFall />
 </template>
 
 <style lang="scss" scoped>
