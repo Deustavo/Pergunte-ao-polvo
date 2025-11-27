@@ -1,48 +1,71 @@
-<script setup>
-    import { computed } from 'vue'; 
+<script setup lang="ts">
+    import { computed, ref } from 'vue'; 
 
     import PolvoNoel from '@/assets/img/polvo-noel.png';
     import PolvoGrinch from '@/assets/img/polvo-grinch.png';
     import PolvoRena from '@/assets/img/polvo-rena.png';
     import PolvoRealista from '@/assets/img/polvo-realista.png';
 
+    const images = [
+        PolvoGrinch,
+        PolvoNoel,
+        PolvoRena,
+        PolvoRealista,
+    ];
+
     /**
-     * Não utilizado durante o natal
+     * Selects a random image from available options
      */
-    const selectRandomImage = computed(() => {
-        let selectedImage = PolvoNoel;
+    const selectRandomImage = () => {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
+    };
 
-        const images = [
-            PolvoGrinch,
-            PolvoNoel,
-            PolvoRena,
-            PolvoRealista,
-        ];
+    const selectedImage = ref(selectRandomImage());
 
-        const indexImage = Math.floor(Math.random() * images.length);
-        selectedImage =  images[indexImage];
-
-        return selectedImage;
-    });
+    const isGrinch = computed(() => {
+        return selectedImage.value === PolvoGrinch;
+    }); 
 </script>
 
 <template>
     <header class="app-header">
-        <div class="polvo-bg">
-            <img
-                class="polvo-img"
-                :src="selectRandomImage"
-                alt="Polvo"
-            />
-            <PolvoEyes />
-        </div>
+        <ClientOnly>
+            <div class="polvo-bg">
+                <img
+                    class="polvo-img"
+                    :src="selectedImage"
+                    alt="Polvo"
+                />
+                <PolvoEyes />
+            </div>
 
-        <h1>Pergunte ao Polvo!</h1>
-        <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
+            <template #fallback>
+                <div class="polvo-bg"></div>
+            </template>
+        </ClientOnly>
+
+        <ClientOnly>
+            <div v-if="isGrinch" class="grinch-text">
+                <h1>Pergunte ao Grinch!</h1>
+                <p class="app-header-description">Coloque abaixo as opções e o grinch decidirá por você:</p>
+            </div>
+            <div v-else>
+                <h1>Pergunte ao Polvo!</h1>
+                <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
+            </div>
+
+            <template #fallback>
+                <div>
+                    <h1>Pergunte ao Polvo!</h1>
+                    <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
+                </div>
+            </template>
+        </ClientOnly>
     </header>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
     .polvo-bg {
         position: relative;
         width: 480px;
@@ -55,6 +78,13 @@
         position: absolute;
         bottom: 0;
         z-index: 2;
+    }
+
+    .grinch-text {
+        h1,
+        .app-header-description {
+            color: #4CAF50;
+        }
     }
 
     @media only screen and (max-width: 768px) {

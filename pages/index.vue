@@ -49,9 +49,7 @@ const closeShortcutModal = () => {
 <template>
   <div>
     <ImagePolvo />
-    <FormPolvoDefault />      <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao polvo?</NuxtLink> -->
-
-    <!-- <FormPolvoMultiChoices /> -->
+    <FormPolvoDefault /> 
     <footer>
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
       <p>♡ Dedicado à moonjoume ♡</p>

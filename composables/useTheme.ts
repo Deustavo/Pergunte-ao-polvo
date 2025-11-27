@@ -1,29 +1,22 @@
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 /**
  * Global theme state shared across all components
  */
 const themeState = ref<string>('light');
-let initialized = false;
-
-/**
- * Initialize theme from localStorage
- */
-const initializeTheme = (): void => {
-  if (!initialized && process.client) {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      themeState.value = savedTheme;
-    }
-    initialized = true;
-  }
-};
 
 export const useTheme = () => {
   /**
-   * Initialize on first use
+   * Initialize theme from localStorage after mount to avoid hydration mismatch
    */
-  initializeTheme();
+  onMounted(() => {
+    if (process.client) {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        themeState.value = savedTheme;
+      }
+    }
+  });
 
   /**
    * Toggle between light and dark theme
