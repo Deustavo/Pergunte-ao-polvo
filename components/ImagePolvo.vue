@@ -5,12 +5,16 @@
     import PolvoGrinch from '@/assets/img/polvo-grinch.png';
     import PolvoRena from '@/assets/img/polvo-rena.png';
     import PolvoRealista from '@/assets/img/polvo-realista.png';
+    import PolvoGelo from '@/assets/img/polvo-gelo.png';
+    import PolvoLuzes from '@/assets/img/polvo-luzes.png';
 
     const images = [
         PolvoGrinch,
         PolvoNoel,
         PolvoRena,
         PolvoRealista,
+        PolvoGelo,
+        PolvoLuzes,
     ];
 
     /**
