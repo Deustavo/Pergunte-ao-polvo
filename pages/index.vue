@@ -4,22 +4,22 @@ const { getTheme, toggleTheme } = useTheme();
 const isShortcutModalOpen = ref(false);
 const isDonationModalOpen = ref(false);
 const isMobileDevice = ref(false);
-const showTooltip = ref(false);
+const showDonationTooltip = ref(false);
 
 const themeIcon = computed(() => {
   return getTheme.value === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 });
 
-const checkAndShowTooltip = () => {
+const checkAndShowDonationTooltip = () => {
   if (process.client) {
-    const hasSeenTooltip = localStorage.getItem('hasSeenInstallTooltip');
-    if (!hasSeenTooltip && isMobileDevice.value) {
-      showTooltip.value = true;
-      localStorage.setItem('hasSeenInstallTooltip', 'true');
-      // Auto-hide tooltip after 3 seconds
+    const hasSeenDonationTooltip = localStorage.getItem('hasSeenDonationTooltip');
+    if (!hasSeenDonationTooltip) {
+      showDonationTooltip.value = true;
+      localStorage.setItem('hasSeenDonationTooltip', 'true');
+      // Auto-hide tooltip after 5 seconds
       setTimeout(() => {
-        showTooltip.value = false;
-      }, 3000);
+        showDonationTooltip.value = false;
+      }, 5000);
     }
   }
 };
@@ -27,11 +27,15 @@ const checkAndShowTooltip = () => {
 onMounted(() => {
   const checkMobile = () => {
     isMobileDevice.value = window.innerWidth <= 768;
-    checkAndShowTooltip();
   };
   
   checkMobile();
   window.addEventListener('resize', checkMobile);
+  
+  // Show donation tooltip after 2 seconds
+  setTimeout(() => {
+    checkAndShowDonationTooltip();
+  }, 2000);
   
   onUnmounted(() => {
     window.removeEventListener('resize', checkMobile);
@@ -82,13 +86,6 @@ const closeDonationModal = () => {
     />
 
     <div class="floating-shortcut-container">
-      <Transition name="tooltip">
-        <div v-if="showTooltip" class="install-tooltip">
-          Adicione o Polvo à sua tela inicial! 🐙
-          <div class="tooltip-arrow"></div>
-        </div>
-      </Transition>
-      
       <button 
         v-if="isMobileDevice"
         class="floating-shortcut-button"
@@ -110,6 +107,13 @@ const closeDonationModal = () => {
     </div>
 
     <div class="floating-container-bottom">
+      <Transition name="tooltip">
+        <div v-if="showDonationTooltip" class="donation-tooltip">
+          Apoie o Pergunte ao Polvo! ❤️🐙
+          <div class="tooltip-arrow"></div>
+        </div>
+      </Transition>
+      
       <button
         class="floating-button donation-button"
         @click="openDonationModal"
@@ -134,7 +138,7 @@ const closeDonationModal = () => {
   z-index: 100;
 }
 
-.install-tooltip {
+.donation-tooltip {
   position: absolute;
   bottom: calc(100% + 12px);
   right: 0;
@@ -145,6 +149,7 @@ const closeDonationModal = () => {
   font-size: 14px;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
+  z-index: 101;
   
   .tooltip-arrow {
     position: absolute;
@@ -254,20 +259,61 @@ const closeDonationModal = () => {
 
 .donation-button {
   background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
-  animation: pulse 2s ease-in-out infinite;
+  animation: heartbeat 4s ease-in-out infinite;
 
   &:hover, &:focus {
     background: linear-gradient(135deg, color.scale(#D63F8C, $lightness: -10%) 0%, color.scale(#F093B0, $lightness: -10%) 100%);
     box-shadow: 0 4px 16px rgba(214, 63, 140, 0.5);
+    animation: none;
+  }
+  
+  i {
+    animation: heartPulse 4s ease-in-out infinite;
+  }
+  
+  &:hover i, &:focus i {
+    animation: none;
   }
 }
 
-@keyframes pulse {
+@keyframes heartbeat {
   0%, 100% {
+    transform: scale(1);
     box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
   }
-  50% {
-    box-shadow: 0 2px 16px rgba(214, 63, 140, 0.6);
+  3% {
+    transform: scale(1.03);
+    box-shadow: 0 2px 10px rgba(214, 63, 140, 0.45);
+  }
+  6% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
+  }
+  9% {
+    transform: scale(1.03);
+    box-shadow: 0 2px 10px rgba(214, 63, 140, 0.45);
+  }
+  12%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  3% {
+    transform: scale(1.05);
+  }
+  6% {
+    transform: scale(1);
+  }
+  9% {
+    transform: scale(1.05);
+  }
+  12%, 100% {
+    transform: scale(1);
   }
 }
 
