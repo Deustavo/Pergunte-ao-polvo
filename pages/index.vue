@@ -12,10 +12,14 @@ const themeIcon = computed(() => {
 
 const checkAndShowDonationTooltip = () => {
   if (process.client) {
-    const hasSeenDonationTooltip = localStorage.getItem('hasSeenDonationTooltip');
-    if (!hasSeenDonationTooltip) {
+    const lastSeenTimestamp = localStorage.getItem('donationTooltipLastSeen');
+    const now = Date.now();
+    const oneWeekInMs = 7 * 24 * 60 * 60 * 1000; // 7 dias em milissegundos
+    
+    // Mostra tooltip se nunca foi visto ou se passou mais de uma semana
+    if (!lastSeenTimestamp || (now - parseInt(lastSeenTimestamp)) > oneWeekInMs) {
       showDonationTooltip.value = true;
-      localStorage.setItem('hasSeenDonationTooltip', 'true');
+      localStorage.setItem('donationTooltipLastSeen', now.toString());
       // Auto-hide tooltip after 5 seconds
       setTimeout(() => {
         showDonationTooltip.value = false;
