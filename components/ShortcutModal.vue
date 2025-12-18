@@ -146,18 +146,19 @@ const closeModal = () => {
 }
 
 .close-modal-button {
-  background-color: #fff;
-  color: #D63F8C;
+  background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
+  color: #fff;
   border: none;
   padding: 0.8rem 2rem;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 
   &:hover {
-    background-color: color.scale(#D63F8C, $lightness: -5%);
+    background: linear-gradient(135deg, #b61f6d 0%, #d07a94 100%);
     color: #fff;
+    transform: scale(1.02);
   }
 
   &:active {

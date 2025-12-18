@@ -2,6 +2,7 @@
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
 const isShortcutModalOpen = ref(false);
+const isDonationModalOpen = ref(false);
 const isMobileDevice = ref(false);
 const showTooltip = ref(false);
 
@@ -44,6 +45,14 @@ const openShortcutModal = () => {
 const closeShortcutModal = () => {
   isShortcutModalOpen.value = false;
 };
+
+const openDonationModal = () => {
+  isDonationModalOpen.value = true;
+};
+
+const closeDonationModal = () => {
+  isDonationModalOpen.value = false;
+};
 </script>
 
 <template>
@@ -59,12 +68,17 @@ const closeShortcutModal = () => {
     <!-- <FormPolvoMultiChoices /> -->
     <footer>
       <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
-      <p>♡ Dedicado à moonjoume ♡</p>
+      <p>❤️ Dedicado à moonjoume ❤️</p>
     </footer>
 
     <ShortcutModal
       :is-open="isShortcutModalOpen"
       @close="closeShortcutModal"
+    />
+
+    <DonationModal
+      :is-open="isDonationModalOpen"
+      @close="closeDonationModal"
     />
 
     <div class="floating-shortcut-container">
@@ -85,12 +99,23 @@ const closeShortcutModal = () => {
       </button>
     </div>
 
-    <div class="floating-container">
+    <div class="floating-container-top">
       <button
-        class="theme-button"
+        class="floating-button theme-button"
         @click="toggleTheme"
+        aria-label="Mudar tema"
       >
         <i :class="themeIcon" />
+      </button>
+    </div>
+
+    <div class="floating-container-bottom">
+      <button
+        class="floating-button donation-button"
+        @click="openDonationModal"
+        aria-label="Doar"
+      >
+        <i class="fas fa-heart" />
       </button>
     </div>
   </div>
@@ -104,7 +129,7 @@ const closeShortcutModal = () => {
 
 .floating-shortcut-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 88px;
   right: 20px;
   z-index: 100;
 }
@@ -156,14 +181,14 @@ const closeShortcutModal = () => {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #D63F8C;
+  background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
   border: none;
   box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: transform 0.2s, all 0.2s;
   z-index: 100;
 
   i {
@@ -173,7 +198,7 @@ const closeShortcutModal = () => {
 
   &:hover, &:focus {
     transform: scale(1.05);
-    background-color: color.scale(#D63F8C, $lightness: -5%);
+    background: linear-gradient(135deg, color.scale(#D63F8C, $lightness: -5%) 0%, color.scale(#F093B0, $lightness: -5%) 100%);
   }
 
   &:active {
@@ -182,6 +207,75 @@ const closeShortcutModal = () => {
 
   @media (min-width: 769px) {
     display: none;
+  }
+}
+
+.floating-container-top {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.floating-container-bottom {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.floating-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  z-index: 100;
+
+  i {
+    color: white;
+    font-size: 20px;
+  }
+
+  &:hover, &:focus {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.donation-button {
+  background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
+  animation: pulse 2s ease-in-out infinite;
+
+  &:hover, &:focus {
+    background: linear-gradient(135deg, color.scale(#D63F8C, $lightness: -10%) 0%, color.scale(#F093B0, $lightness: -10%) 100%);
+    box-shadow: 0 4px 16px rgba(214, 63, 140, 0.5);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(214, 63, 140, 0.4);
+  }
+  50% {
+    box-shadow: 0 2px 16px rgba(214, 63, 140, 0.6);
+  }
+}
+
+.theme-button {
+  background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
+
+  &:hover, &:focus {
+    background: linear-gradient(135deg, #b61f6d 0%, #d07a94 100%);
   }
 }
 </style>

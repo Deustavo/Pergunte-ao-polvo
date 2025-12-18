@@ -77,24 +77,24 @@ input {
 .button {
     padding: 10px 40px;
     margin-bottom: 24px;
-    background-color: #D63F8C;
+    background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
     color: #fff;
     border: 2px solid #D63F8C;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: all ease-in-out 300ms;
 
     &:hover {
-        background-color: #b61f6d;
+        background: linear-gradient(135deg, #b61f6d 0%, #d07a94 100%);
         border-color: #b61f6d;
     }
 }
 
 .button--outline {
-    background-color: transparent;
+    background: #ffffff;
     color: #D63F8C;
     border: 2px solid #D63F8C;
-    border-radius: 5px;
+    border-radius: 50px;
     margin-top: 4px;
     cursor: pointer;
     padding: 8px 38px;
@@ -103,7 +103,7 @@ input {
 
     &:hover {
         color: #fff;
-        background-color: #D63F8C;
+        background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
         border-color: #D63F8C;
     }   
 }

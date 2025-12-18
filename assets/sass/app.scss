@@ -146,7 +146,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #D63F8C;
+    background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
     color: #fff;
     border: 2px solid #D63F8C;
     border-radius: 40px;
@@ -154,11 +154,11 @@ footer {
     height: 36px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     text-decoration: none;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     &:hover {
-      background-color: #b61f6d;
+      background: linear-gradient(135deg, #b61f6d 0%, #d07a94 100%);
       border-color: #b61f6d;
     }
   }
