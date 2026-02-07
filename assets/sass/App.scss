@@ -1,0 +1,52 @@
+/**
+ * App root: donation notification bar and transitions
+ */
+
+.donation-notification-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #D63F8C 0%, #F093B0 100%);
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(214, 63, 140, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.donation-notification-line {
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.donation-notification-message {
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+.donation-notification-enter-active,
+.donation-notification-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.donation-notification-enter-from,
+.donation-notification-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.donation-notification-enter-to,
+.donation-notification-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}

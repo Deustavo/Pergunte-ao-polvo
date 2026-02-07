@@ -99,6 +99,6 @@
   </div>
 </template>
 
-<style scoped>
-@import '../assets/sass/FormPolvoMultiChoices.scss';
+<style scoped lang="scss">
+@import '@/assets/sass/FormPolvoMultiChoices.scss';
 </style>
