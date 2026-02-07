@@ -24,4 +24,3 @@ watchEffect(() => {
   <NuxtPage />
 </template>
 
-
