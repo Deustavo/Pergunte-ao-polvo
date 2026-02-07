@@ -2,23 +2,15 @@
 
 ## ✅ O que foi implementado
 
-Sistema completo de doações via PIX para o projeto "Pergunte ao Polvo".
+Sistema de doações via **LivePix** para o projeto "Pergunte ao Polvo". O botão de doação redireciona o usuário para a página do LivePix, onde as doações são gerenciadas.
 
 ## 📋 Checklist de Configuração
 
-### 1️⃣ Configure sua chave PIX
+### 1️⃣ Página LivePix
 
-Edite o arquivo: `composables/useDonation.ts`
+As doações são realizadas em: **https://livepix.gg/pergunteaopolvo**
 
-```typescript
-const pixKey = ref('sua-chave-pix-aqui');
-```
-
-**Tipos de chave PIX aceitos:**
-- 📧 E-mail
-- 📱 Telefone
-- 🆔 CPF/CNPJ  
-- 🔑 Chave aleatória
+O botão flutuante na aplicação abre esse link em uma nova aba.
 
 ### 2️⃣ Teste localmente
 
@@ -32,147 +24,103 @@ http://localhost:3000
 
 ### 3️⃣ Como testar
 
-✅ **Botão flutuante:** Clique no coração (❤️) no canto inferior esquerdo
+✅ **Botão flutuante:** Clique no coração (❤️) no canto inferior direito
 
-✅ **Modal:** Deve abrir com informações de doação
+✅ **Redirecionamento:** Deve abrir a página do LivePix em nova aba
 
-✅ **Copiar PIX:** Clique no botão "Copiar" e verifique feedback
+✅ **Tooltip:** Após alguns segundos, um tooltip "Apoie o Pergunte ao Polvo! ❤️🐙" pode aparecer próximo ao botão
 
-## 📁 Arquivos criados
-
-```
-projeto/
-├── components/
-│   ├── DonationModal.vue      ✨ Modal de doação
-│   └── PixQRCode.vue          🔲 QR Code (opcional)
-│
-├── composables/
-│   └── useDonation.ts         🧩 Lógica centralizada
-│
-└── DOACAO.md                  📖 Documentação completa
-```
-
-## 📝 Arquivos modificados
+## 📁 Estrutura relacionada
 
 ```
 projeto/
 ├── pages/
-│   └── index.vue              🏠 Adicionado botão de doação
+│   └── index.vue              🏠 Botão de doação (link para LivePix)
 │
-└── nuxt.config.ts             ⚙️ Estilos dark theme
+└── INSTALACAO_DOACOES.md      📖 Esta documentação
 ```
+
+O link de doação está definido em `pages/index.vue` na constante `LIVEPIX_DONATE_URL`.
 
 ## 🎨 Características
 
-### Modal de Doação
-- ✨ Design moderno e responsivo
-- 📋 Copiar chave PIX com um clique
-- 🎭 Animações suaves
-- ⌨️ Fechamento com ESC
-- ♿ Acessível (aria-labels)
-- 📄 Informações completas sobre doação
-- 🎯 Motivos para doar
-
-### Botões Flutuantes
-- ❤️ Botão de doação com animação de pulso
-- 🌙 Botão de tema (sol/lua)
+### Botão de Doação
+- ❤️ Botão flutuante com animação de pulso (coração)
+- 🔗 Abre o LivePix em nova aba (`target="_blank"`)
+- ♿ Acessível (aria-label "Doar")
 - 📱 Responsivo mobile e desktop
-- 🎨 Suporte a dark theme
+- 🎨 Estilo alinhado ao tema do projeto (gradiente rosa)
+
+### Outros botões flutuantes
+- 🌙 Botão de tema (sol/lua)
+- 📱 Botão "Adicionar à tela inicial" (mobile)
 
 ## 🔧 Personalização
 
-### Alterar cores
+### Alterar a URL de doação
 
-Edite os arquivos `.vue` para mudar as cores:
+Edite em `pages/index.vue`:
+
+```typescript
+const LIVEPIX_DONATE_URL = 'https://livepix.gg/pergunteaopolvo';
+```
+
+Substitua pela URL da sua página no LivePix (ou outro serviço de doação).
+
+### Alterar cores do botão
+
+No mesmo arquivo, na seção `<style>`:
 
 ```scss
 // Cor principal de doação
 #D63F8C
 
-// Cor secundária
+// Cor secundária (gradiente)
 #F093B0
-
-// Cor de sucesso
-#28a745
 ```
-
-### Alterar textos
-
-- **Modal:** `components/DonationModal.vue`
-
-## 🎁 QR Code PIX
-
-O modal de doação já inclui suporte a QR Code para facilitar o pagamento!
-
-### Para habilitar:
-
-```bash
-# Instale a biblioteca qrcode
-npm install qrcode
-```
-
-Após instalar, o QR Code aparecerá automaticamente no modal de doação. O usuário poderá:
-- 📱 Escanear o QR Code com o app do banco
-- 📋 Ou copiar manualmente a chave PIX
-
-Se a biblioteca não estiver instalada, apenas a opção de copiar a chave ficará disponível.
 
 ## 🧪 Testes
 
 ### ✓ Checklist de testes
 
 - [ ] Botão de doação aparece na página inicial (canto inferior direito)
-- [ ] Botão abre o modal de doação
-- [ ] QR Code aparece no modal (se biblioteca instalada)
-- [ ] Modal exibe a chave PIX correta
-- [ ] Botão "Copiar" funciona e mostra feedback
-- [ ] Modal fecha ao clicar fora
-- [ ] Modal fecha ao pressionar ESC
+- [ ] Clique no botão abre a página do LivePix em nova aba
+- [ ] URL aberta é https://livepix.gg/pergunteaopolvo
 - [ ] Design responsivo em mobile
-- [ ] Dark theme funciona corretamente
+- [ ] Tema claro/escuro funciona corretamente
 
 ## 🚀 Deploy
 
-Após configurar sua chave PIX:
+Não é necessária configuração extra de chave PIX ou backend. Após publicar a aplicação:
 
 ```bash
-# Build de produção
 npm run build
-
-# Preview local
 npm run preview
 
 # Deploy (Vercel, Netlify, etc)
-# Faça commit e push para seu repositório
 git add .
-git commit -m "feat: adiciona sistema de doações via PIX"
+git commit -m "feat: doações via LivePix"
 git push
 ```
 
+Certifique-se de que a página no LivePix está ativa e com a URL correta.
+
 ## 💡 Dicas
 
-1. **Segurança:** Nunca commit informações sensíveis de pagamento
-2. **Teste:** Sempre teste em ambiente local antes do deploy
-3. **QR Code:** Valide o QR Code com um app de banco real
-4. **Analytics:** Considere adicionar tracking para conversão
+1. **LivePix:** Mantenha a página do LivePix configurada e publicada
+2. **Teste:** Confira o link em produção após o deploy
+3. **Acessibilidade:** O link usa `rel="noopener noreferrer"` por segurança
 
 ## 🐛 Problemas Comuns
 
 ### Ícones não aparecem
 ✅ Solução: Font Awesome já está configurado em `nuxt.config.ts`
 
-### Botão não aparece
-✅ Solução: Verifique se importou `DonationModal` em `index.vue`
-
-### Erro ao copiar
-✅ Solução: Use HTTPS ou localhost (clipboard requer contexto seguro)
+### Link não abre em nova aba
+✅ Solução: Verifique se o elemento é um `<a>` com `target="_blank"` em `pages/index.vue`
 
 ### Dark theme quebrado
-✅ Solução: Estilos estão em `nuxt.config.ts` linha 23-40
-
-## 📚 Documentação Completa
-
-Para mais detalhes, consulte: `DOACAO.md`
+✅ Solução: Estilos estão em `nuxt.config.ts` (linhas de dark theme)
 
 ## 🤝 Contribuindo
 
@@ -185,6 +133,5 @@ Se encontrar bugs ou tiver sugestões:
 
 💜 Feito com carinho para o Pergunte ao Polvo 🐙
 
-**Desenvolvido por:** [Gustavo Andrade](https://github.com/Deustavo)
+**Desenvolvido por:** [Gustavo Andrade](https://github.com/Deustavo)  
 **Dedicado à:** moonjoume ♡
-

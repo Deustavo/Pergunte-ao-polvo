@@ -2,7 +2,6 @@
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
 const isShortcutModalOpen = ref(false);
-const isDonationModalOpen = ref(false);
 const isMobileDevice = ref(false);
 const showDonationTooltip = ref(false);
 
@@ -54,13 +53,7 @@ const closeShortcutModal = () => {
   isShortcutModalOpen.value = false;
 };
 
-const openDonationModal = () => {
-  isDonationModalOpen.value = true;
-};
-
-const closeDonationModal = () => {
-  isDonationModalOpen.value = false;
-};
+const LIVEPIX_DONATE_URL = 'https://livepix.gg/pergunteaopolvo';
 </script>
 
 <template>
@@ -82,11 +75,6 @@ const closeDonationModal = () => {
     <ShortcutModal
       :is-open="isShortcutModalOpen"
       @close="closeShortcutModal"
-    />
-
-    <DonationModal
-      :is-open="isDonationModalOpen"
-      @close="closeDonationModal"
     />
 
     <div class="floating-shortcut-container">
@@ -118,13 +106,15 @@ const closeDonationModal = () => {
         </div>
       </Transition>
       
-      <button
+      <a
         class="floating-button donation-button"
-        @click="openDonationModal"
+        :href="LIVEPIX_DONATE_URL"
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Doar"
       >
         <i class="fas fa-heart" />
-      </button>
+      </a>
     </div>
   </div>
 
@@ -259,6 +249,10 @@ const closeDonationModal = () => {
   &:active {
     transform: scale(0.95);
   }
+}
+
+a.donation-button {
+  text-decoration: none;
 }
 
 .donation-button {
