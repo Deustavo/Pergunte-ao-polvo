@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 /**
- * Lists donations from LivePix and optionally listens for new donations via SSE.
+ * Lists donations from LivePix and optionally listens for new donations via polling.
  */
 
 interface DonationItem {
@@ -21,7 +21,8 @@ const donations = ref<DonationItem[]>([]);
 const loading = ref(true);
 const error = ref<string | null>(null);
 const showNewDonationToast = ref(false);
-let eventSource: EventSource | null = null;
+
+const { start: startDonationPolling, stop: stopDonationPolling, onNewDonation } = useDonationPolling();
 
 const fetchDonations = async () => {
   loading.value = true;
@@ -57,44 +58,23 @@ const formatAmount = (value: number, currency: string) => {
   }).format(value);
 };
 
-const startSSE = () => {
-  if (typeof EventSource === 'undefined') return;
-  if (eventSource) return;
-  const url = `${window.location.origin}/api/donations/stream`;
-  eventSource = new EventSource(url);
-  eventSource.onmessage = (ev) => {
-    try {
-      const data = JSON.parse(ev.data);
-      if (data.type !== 'new-donation') return;
-      fetchDonations();
-      showNewDonationToast.value = true;
-      setTimeout(() => {
-        showNewDonationToast.value = false;
-      }, 5000);
-    } catch {
-      // ignore keepalive or parse errors
-    }
-  };
-  eventSource.onerror = () => {
-    eventSource?.close();
-    eventSource = null;
-  };
-};
-
-const stopSSE = () => {
-  eventSource?.close();
-  eventSource = null;
-};
+onNewDonation(() => {
+  fetchDonations();
+  showNewDonationToast.value = true;
+  setTimeout(() => {
+    showNewDonationToast.value = false;
+  }, 5000);
+});
 
 const LIVEPIX_DONATE_URL = 'https://livepix.gg/pergunteaopolvo';
 
 onMounted(() => {
   fetchDonations();
-  startSSE();
+  startDonationPolling();
 });
 
 onUnmounted(() => {
-  stopSSE();
+  stopDonationPolling();
 });
 </script>
 

@@ -23,7 +23,7 @@ watchEffect(() => {
 });
 
 /**
- * Donation notification from SSE: show at top when a new donation is received.
+ * Donation notification: show at top when a new donation is received (via polling).
  */
 interface DonationNotificationPayload {
   amountInReais?: number;
@@ -33,8 +33,9 @@ interface DonationNotificationPayload {
 }
 
 const donationNotification = ref<DonationNotificationPayload | null>(null);
-let eventSource: EventSource | null = null;
 let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+const { start: startDonationPolling, stop: stopDonationPolling, onNewDonation } = useDonationPolling();
 
 const formatDonationValue = (value: number, currency: string) => {
   return new Intl.NumberFormat('pt-BR', {
@@ -65,39 +66,22 @@ const showDonationNotification = (payload: DonationNotificationPayload) => {
   }, 6000);
 };
 
-const startDonationStream = () => {
-  if (typeof EventSource === 'undefined' || eventSource) return;
-  const url = `${window.location.origin}/api/donations/stream`;
-  eventSource = new EventSource(url);
-  eventSource.onmessage = (ev) => {
-    try {
-      const data = JSON.parse(ev.data);
-      if (data.type === 'new-donation' && (data.amountInReais != null || data.username != null)) {
-        showDonationNotification({
-          amountInReais: data.amountInReais,
-          currency: data.currency,
-          username: data.username ?? null,
-          message: data.message ?? null,
-        });
-      }
-    } catch {
-      // ignore keepalive or parse errors
-    }
-  };
-  eventSource.onerror = () => {
-    eventSource?.close();
-    eventSource = null;
-  };
-};
+onNewDonation((donation) => {
+  showDonationNotification({
+    amountInReais: donation.amountInReais,
+    currency: donation.currency,
+    username: donation.username ?? null,
+    message: donation.message ?? null,
+  });
+});
 
 onMounted(() => {
-  if (process.client) startDonationStream();
+  if (process.client) startDonationPolling();
 });
 
 onUnmounted(() => {
   if (hideTimeout) clearTimeout(hideTimeout);
-  eventSource?.close();
-  eventSource = null;
+  stopDonationPolling();
 });
 </script>
 

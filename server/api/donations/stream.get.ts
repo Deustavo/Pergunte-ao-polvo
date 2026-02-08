@@ -1,6 +1,8 @@
 /**
  * Server-Sent Events stream for new donation notifications.
- * Clients connect here and receive events when the webhook receives a payment.
+ * Kept for local/dev. In serverless (e.g. Vercel) this hits FUNCTION_INVOCATION_TIMEOUT
+ * and webhook/stream run in different instances (no shared memory). Production uses
+ * polling via useDonationPolling instead.
  */
 
 import { donationEvents, DONATION_EVENT_NAME } from '../../utils/donation-events';
