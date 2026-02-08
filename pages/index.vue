@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  key: (route) => route.fullPath,
+});
+
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
 const isShortcutModalOpen = ref(false);
@@ -53,6 +57,14 @@ const closeShortcutModal = () => {
   isShortcutModalOpen.value = false;
 };
 
+/**
+ * Navigate to donations with full page load so the correct page is rendered.
+ * Client-side navigation was not updating NuxtPage content (Nuxt 3.12).
+ */
+const goToDonations = () => {
+  navigateTo('/donations', { external: true });
+};
+
 </script>
 
 <template>
@@ -105,18 +117,18 @@ const closeShortcutModal = () => {
         </div>
       </Transition>
       
-      <NuxtLink
+      <button
+        type="button"
         class="floating-button donation-button"
-        to="/donations"
         aria-label="Ver doações"
+        @click="goToDonations"
       >
         <i class="fas fa-heart" />
-      </NuxtLink>
+      </button>
     </div>
+    <!-- Neve caindo -->
+    <!-- <SnowFall /> -->
   </div>
-
-  <!-- Neve caindo -->
-  <!-- <SnowFall /> -->
 </template>
 
 <style lang="scss" scoped>

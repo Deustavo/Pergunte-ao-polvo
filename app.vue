@@ -4,6 +4,9 @@ import { watchEffect } from 'vue';
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme } = useTheme();
 
+const route = useRoute();
+const pageKey = computed(() => route.fullPath);
+
 /**
  * Sync theme with html and body elements
  */
@@ -112,7 +115,9 @@ onUnmounted(() => {
         </div>
       </div>
     </Transition>
-    <NuxtPage :page-key="(route) => route.fullPath" />
+    <div :key="pageKey">
+      <NuxtPage :page-key="pageKey" />
+    </div>
   </div>
 </template>
 
