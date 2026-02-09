@@ -1,0 +1,39 @@
+---
+description: Keep SCSS in external files for Vue components; import in the component
+globs: **/*.vue
+alwaysApply: false
+---
+
+# Vue: External SCSS
+
+Always keep component styles in a separate `.scss` file instead of inline `<style>` blocks.
+
+## Where to put SCSS
+
+- **Components** (`components/*.vue`): one file per component in `assets/sass/`, named after the component (e.g. `ShortcutModal.vue` → `assets/sass/ShortcutModal.scss`).
+- **Pages** (`pages/*.vue`): one file per page in `assets/sass/` (e.g. `pages/index.vue` → `assets/sass/Index.scss`, `pages/donations.vue` → `assets/sass/Donations.scss`).
+- **App** (`app.vue`): use `assets/sass/App.scss`.
+
+## In the Vue file
+
+Use a single `<style>` block that only imports the external file:
+
+```vue
+<style scoped lang="scss">
+@import '@/assets/sass/ComponentName.scss';
+</style>
+```
+
+For global styles (e.g. app theme) use a second block without `scoped`:
+
+```vue
+<style lang="scss">
+@import '@/assets/sass/app.scss';
+</style>
+```
+
+## Rules
+
+- Do not write raw SCSS/CSS inside the Vue file; put all rules in the corresponding `.scss` file.
+- Use `@/assets/sass/` for import paths.
+- New components get a new `.scss` in `assets/sass/` and the Vue file imports it.

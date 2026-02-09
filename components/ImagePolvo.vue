@@ -56,29 +56,6 @@
     </div>
 </template>
 
-<style scoped>
-    .polvo-bg {
-        position: relative;
-        width: 480px;
-        height: 285px;
-    }
-
-    .polvo-img {
-        margin: 0 0 0 12px;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        z-index: 2;
-    }
-
-    @media only screen and (max-width: 768px) {
-        .polvo-bg {
-            width: 90vw;
-            height: 53vw;
-        }
-
-        .polvo-img {
-            margin: 0 0 0 10px;
-        }
-    }
+<style scoped lang="scss">
+@import '@/assets/sass/ImagePolvo.scss';
 </style>

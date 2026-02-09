@@ -100,6 +100,6 @@
   </div>
 </template>
 
-<style scoped>
-@import '../assets/sass/FormPolvoDefault.scss';
+<style scoped lang="scss">
+@import '@/assets/sass/FormPolvoDefault.scss';
 </style>
