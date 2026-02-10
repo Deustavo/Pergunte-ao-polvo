@@ -34,7 +34,7 @@
                       required
                   >
                 </div>
-                <p>vs.</p>
+                <p>ou</p>
                 <div class="app-option-input">
                     <input
                       type="text"

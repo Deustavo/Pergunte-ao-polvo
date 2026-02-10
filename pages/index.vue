@@ -128,6 +128,7 @@ const goToDonations = () => {
     </div>
     <!-- Neve caindo -->
     <!-- <SnowFall /> -->
+    <ConfettiFall />
   </div>
 </template>
 

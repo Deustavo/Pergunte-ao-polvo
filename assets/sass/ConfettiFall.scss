@@ -1,0 +1,64 @@
+/**
+ * ConfettiFall: full-screen falling confetti animation (carnival style).
+ * Does not block pointer events.
+ */
+
+.confetti-fall {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 8px;
+  opacity: 0.9;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(720deg);
+  }
+}
+
+$confetti-colors: (
+  #ff6b6b,
+  #feca57,
+  #48dbfb,
+  #ff9ff3,
+  #54a0ff,
+  #5f27cd,
+  #00d2d3,
+  #ff9f43,
+  #ee5253,
+  #0abde3,
+  #1dd1a1,
+  #ffc048,
+);
+
+@for $i from 1 through 80 {
+  .confetti-piece--#{$i} {
+    left: #{(random(100)) * 1%};
+    width: #{4 + random(8)}px;
+    height: #{3 + random(5)}px;
+    background: nth($confetti-colors, random(12));
+    --drift: #{random(80) - 40}px;
+    animation: confetti-fall #{4 + random(6)}s linear infinite;
+    animation-delay: -#{random(12)}s;
+    @if $i % 3 == 0 {
+      border-radius: 2px;
+    }
+    @if $i % 5 == 0 {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+  }
+}

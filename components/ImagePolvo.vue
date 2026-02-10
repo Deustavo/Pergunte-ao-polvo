@@ -14,12 +14,13 @@
     import PolvoFred from '@/assets/img/polvo-fred.png';
     import PolvoAbobora from '@/assets/img/polvo-abobora.png';
     import PolvoFrank from '@/assets/img/polvo-frank.png';
+    import PolvoCarnaval1 from '@/assets/img/polvo-carnaval_1.png';
 
     /**
      * Não utilizado durante o natal
      */
     const selectRandomImage = computed(() => {
-        let selectedImage = Polvo;
+        let selectedImage = PolvoCarnaval1;
 
         const images = [
             PolvoDefault,
