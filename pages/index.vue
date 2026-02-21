@@ -126,9 +126,8 @@ const goToDonations = () => {
         <i class="fas fa-heart" />
       </button>
     </div>
-    <!-- Neve caindo -->
     <!-- <SnowFall /> -->
-    <ConfettiFall />
+    <!-- <ConfettiFall /> -->
   </div>
 </template>
 

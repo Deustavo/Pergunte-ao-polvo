@@ -20,7 +20,7 @@
      * Não utilizado durante o natal
      */
     const selectRandomImage = computed(() => {
-        let selectedImage = PolvoCarnaval1;
+        let selectedImage = Polvo;
 
         const images = [
             PolvoDefault,
@@ -35,6 +35,7 @@
             PolvoFred,
             PolvoAbobora,
             PolvoFrank,
+            PolvoCarnaval1
         ];
 
         if (Math.random() < 0.4) {
