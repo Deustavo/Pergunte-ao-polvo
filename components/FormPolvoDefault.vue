@@ -67,7 +67,7 @@
                 <b>{{ option1 }}</b> vs. <b>{{ option2 }}</b>
             </div>
 
-            <p>O polvo escolheu:</p>
+            <p>Nicolas Cage escolheu:</p>
             
             <div class="app-result-selectedOption">
                 <div v-if="loading">

@@ -6,12 +6,12 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Pergunte ao polvo',
+      title: 'Pergunte ao Nicolas Cage',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Pergunte ao Polvo! Se precisar fazer uma escolha difícil, pergunte ao polvo! Ele saberá a resposta certa.' },
-        { name: 'keywords', content: 'Pergunte ao Polvo, escolha difícil, decisão, diversão' },
+        { name: 'description', content: 'Pergunte ao Nicolas Cage! Se precisar fazer uma escolha difícil, pergunte ao Nicolas Cage! Ele saberá a resposta certa.' },
+        { name: 'keywords', content: 'Pergunte ao Nicolas Cage, escolha difícil, decisão, diversão' },
         { name: 'author', content: 'deustavo' }
       ],
       script: [

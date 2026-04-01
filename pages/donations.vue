@@ -84,9 +84,9 @@ onUnmounted(() => {
       <NuxtLink class="back-link" to="/">
         <i class="fas fa-arrow-left"></i> Voltar
       </NuxtLink>
-      <h1>Ajude o polvo a continuar existindo!</h1>
+      <h1>Ajude o Nicolas Cage a continuar existindo!</h1>
       <p>
-        Se você também põe todas as decisões importantes da sua vida nos tentaculos do polvo,
+        Se você também confia as decisões importantes da sua vida a Nicolas Cage,
         considere ajudá-lo a continuar existindo.
       </p>
       <a
@@ -96,7 +96,7 @@ onUnmounted(() => {
         rel="noopener noreferrer"
       >
         <i class="fas fa-heart"></i>
-        Apoie o polvo
+        Apoie o Nicolas Cage
       </a>
     </header>
 

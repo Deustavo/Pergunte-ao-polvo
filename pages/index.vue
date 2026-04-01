@@ -71,10 +71,10 @@ const goToDonations = () => {
   <div>
     <header class="app-header">
       <ImagePolvo />
-      <h1>Pergunte ao Polvo!</h1>
-      <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao polvo?</NuxtLink> -->
-      <!-- <p class="app-header-description">Se precisar fazer uma escolha difícil, pergunte ao polvo!<br>Ele saberá a resposta certa.</p> -->
-      <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
+      <h1>Pergunte ao Nicolas Cage!</h1>
+      <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao Nicolas Cage?</NuxtLink> -->
+      <!-- <p class="app-header-description">Se precisar fazer uma escolha difícil, pergunte ao Nicolas Cage!<br>Ele saberá a resposta certa.</p> -->
+      <p class="app-header-description">Coloque abaixo as opções e Nicolas Cage decidirá por você:</p>
     </header>
     <FormPolvoDefault />
     <!-- <FormPolvoMultiChoices /> -->
@@ -112,7 +112,7 @@ const goToDonations = () => {
     <div class="floating-container-bottom">
       <Transition name="tooltip">
         <div v-if="showDonationTooltip" class="donation-tooltip">
-          Apoie o Pergunte ao Polvo! ❤️🐙
+          Apoie o Pergunte ao Nicolas Cage! ❤️
           <div class="tooltip-arrow"></div>
         </div>
       </Transition>

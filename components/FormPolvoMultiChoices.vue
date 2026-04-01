@@ -88,7 +88,7 @@
             v-if="!!selectedOption && !loading"
             class="app-result"
         >
-            <p>O polvo escolheu:</p>
+            <p>Nicolas Cage escolheu:</p>
             <p class="app-result-selectedOption">{{ selectedOption }}</p>
         </div>
 

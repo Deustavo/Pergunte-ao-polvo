@@ -19,7 +19,7 @@ const closeModal = () => {
       <div class="modal-content" @click.stop>
         <button class="close-button" @click="closeModal">×</button>
         
-        <h2>Adicione o Polvo na sua tela inicial! 🐙</h2>
+        <h2>Adicione o Nicolas Cage na sua tela inicial! 🎬</h2>
         
         <div class="device-instructions">
           <section class="android-instructions">
