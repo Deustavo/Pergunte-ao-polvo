@@ -1,5 +1,5 @@
 /**
- * ImagePolvo: hero image container and responsive sizing
+ * ImagePolvo: hero image container, responsive sizing, cage / polvo easter egg
  */
 
 .polvo-bg {
@@ -8,12 +8,130 @@
   height: 285px;
 }
 
-.polvo-img {
-  margin: 0 0 0 12px;
-  width: 100%;
+.polvo-behind {
   position: absolute;
   bottom: 0;
+  left: 50%;
+  z-index: 1;
+  width: 88%;
+  max-height: 92%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.polvo-cage-hit {
+  --press-y: 0px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 2;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(var(--press-y));
+  transform-origin: center bottom;
+  transition: transform 0.38s cubic-bezier(0.33, 1.15, 0.52, 1);
+}
+
+.polvo-cage-hit--press1 {
+  --press-y: 16px;
+}
+
+.polvo-cage-hit--press2 {
+  --press-y: 38px;
+}
+
+.polvo-cage-hit--shake:not(.polvo-cage-hit--fallen) {
+  animation: polvo-cage-shake 0.48s ease;
+}
+
+@keyframes polvo-cage-shake {
+  0%,
+  100% {
+    transform: translateY(var(--press-y)) translateX(0) rotate(0deg);
+  }
+
+  18% {
+    transform: translateY(var(--press-y)) translateX(-11px) rotate(-3deg);
+  }
+
+  36% {
+    transform: translateY(var(--press-y)) translateX(10px) rotate(3deg);
+  }
+
+  54% {
+    transform: translateY(var(--press-y)) translateX(-8px) rotate(-2deg);
+  }
+
+  72% {
+    transform: translateY(var(--press-y)) translateX(7px) rotate(2deg);
+  }
+
+  90% {
+    transform: translateY(var(--press-y)) translateX(-3px);
+  }
+}
+
+.polvo-cage-hit--fallen {
+  --press-y: 38px;
+  pointer-events: none;
+  cursor: default;
+  transition: none;
+  animation: polvo-cage-fall 0.88s cubic-bezier(0.5, 0, 0.85, 0.45) forwards;
+}
+
+@keyframes polvo-cage-fall {
+  from {
+    transform: translateY(var(--press-y)) rotate(0deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(min(110vh, 820px)) rotate(24deg);
+    opacity: 0;
+  }
+}
+
+@keyframes polvo-cage-intro-sway {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  18% {
+    transform: rotate(5deg);
+  }
+
+  40% {
+    transform: rotate(-3.5deg);
+  }
+
+  62% {
+    transform: rotate(2deg);
+  }
+
+  82% {
+    transform: rotate(-0.8deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.polvo-img {
+  display: block;
+  margin: 0 0 0 12px;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  animation: polvo-cage-intro-sway 1.05s cubic-bezier(0.33, 0.02, 0.24, 1) 1;
 }
 
 @media only screen and (max-width: 768px) {
