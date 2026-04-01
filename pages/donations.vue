@@ -3,6 +3,7 @@ definePageMeta({
   key: (route) => route.fullPath,
 });
 
+
 /**
  * Lists donations from LivePix and optionally listens for new donations via polling.
  */
