@@ -15,6 +15,7 @@
     import PolvoAbobora from '@/assets/img/polvo-abobora.png';
     import PolvoFrank from '@/assets/img/polvo-frank.png';
     import PolvoCarnaval1 from '@/assets/img/polvo-carnaval_1.png';
+    import PolvoPascoa from '@/assets/img/polvo-coelho.png';
 
     /**
      * Não utilizado durante o natal
@@ -51,7 +52,7 @@
     <div class="polvo-bg">
         <img
             class="polvo-img"
-            :src="selectRandomImage"
+            :src="PolvoPascoa"
             alt="Polvo"
         />
         <PolvoEyes />
