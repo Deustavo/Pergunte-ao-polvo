@@ -1,6 +1,5 @@
 <script setup>
     import { computed } from 'vue'; 
-
     import Polvo from '@/assets/img/polvo.png';
     import PolvoDefault from '@/assets/img/polvo-default.png';
     import PolvoBruxa from '@/assets/img/polvo-bruxa.png';
