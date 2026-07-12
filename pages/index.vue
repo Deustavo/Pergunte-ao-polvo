@@ -8,7 +8,7 @@ import miadoAudio from '@/assets/audio/miado1.mp3';
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
 // @ts-ignore - Auto-imported by Nuxt
-const { grinchVariantActive } = useSeasonalTheme();
+const { activeTheme, grinchVariantActive } = useSeasonalTheme();
 const isShortcutModalOpen = ref(false);
 const isMobileDevice = ref(false);
 const showGameTooltip = ref(false);
@@ -127,7 +127,7 @@ const openChinelaDestroyer = () => {
       </button>
     </div>
 
-    <div class="floating-container-top">
+    <div v-if="activeTheme !== 'halloween'" class="floating-container-top">
       <button
         class="floating-button theme-button"
         @click="toggleTheme"

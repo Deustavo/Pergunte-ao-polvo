@@ -169,3 +169,14 @@ html.season-halloween body {
   background: url('~/assets/img/halloween-background.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
+// No halloween não há troca de tema claro/escuro: fonte sempre branca, em ambos os estados
+html.season-halloween,
+html.season-halloween body,
+html.season-halloween h1,
+html.season-halloween p,
+html.season-halloween label,
+html.season-halloween.dark-theme,
+html.season-halloween.dark-theme body {
+  color: #fff !important;
+}

@@ -51,6 +51,7 @@
         if (activeTheme.value === 'halloween') return pickRandom(halloweenPool);
         if (activeTheme.value === 'natal') return pickRandom(natalPool);
         if (activeTheme.value === 'pascoa') return PolvoCoelho;
+        if (activeTheme.value === 'carnaval') return PolvoCarnaval1;
 
         if (Math.random() < 0.4) return pickRandom(defaultPool);
         return Polvo;

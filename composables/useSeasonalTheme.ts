@@ -1,4 +1,4 @@
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { seasonalThemes, resolveThemeDateRange, type SeasonalThemeConfig, type SeasonalThemeId } from '@/settings/seasonalThemes';
 
 export type { SeasonalThemeId };
@@ -22,8 +22,8 @@ const isThemeActiveOn = (config: SeasonalThemeConfig, date: Date): boolean => {
 const themeIds: SeasonalThemeId[] = seasonalThemes.map((t) => t.id);
 
 /**
- * Global override state shared across all components, used for dev/QA preview
- * (?tema=halloween in the URL, persisted for the browser session)
+ * Override state shared across all components, used for dev/QA preview via ?tema=<id>
+ * in the URL. `null` means "no override" — activeTheme falls back to the real date.
  */
 const overrideTheme = ref<SeasonalThemeId | null>(null);
 
@@ -36,40 +36,24 @@ export const grinchVariantActive = ref(false);
 /**
  * Applies ?tema= from the query string. Uses useRoute() (not window.location) so the
  * server render and the client's first render agree — avoids a hydration mismatch.
+ *
+ * A valid ?tema=<id> forces that theme. Anything else — missing, "nenhum", or an
+ * unrecognized value — clears the override, so the current URL is always the single
+ * source of truth: no theme "sticks" from a previous navigation without ?tema=.
  */
 const applyQueryOverride = (queryTheme: unknown): void => {
-  if (queryTheme === 'nenhum') {
-    overrideTheme.value = null;
-    if (process.client) sessionStorage.setItem('seasonalThemeOverride', 'nenhum');
+  if (typeof queryTheme === 'string' && themeIds.includes(queryTheme as SeasonalThemeId)) {
+    overrideTheme.value = queryTheme as SeasonalThemeId;
     return;
   }
 
-  if (typeof queryTheme === 'string' && themeIds.includes(queryTheme as SeasonalThemeId)) {
-    overrideTheme.value = queryTheme as SeasonalThemeId;
-    if (process.client) sessionStorage.setItem('seasonalThemeOverride', queryTheme);
-  }
+  overrideTheme.value = null;
 };
 
 export const useSeasonalTheme = () => {
   // @ts-ignore - Auto-imported by Nuxt
   const route = useRoute();
   applyQueryOverride(route.query.tema);
-
-  /**
-   * Re-apply a previously remembered override (sessionStorage) after mount, when no
-   * ?tema= is present on this navigation. Deferred to onMounted, like useTheme.ts,
-   * since sessionStorage isn't available during SSR and reading it eagerly would
-   * make the client's first render diverge from the server's.
-   */
-  onMounted(() => {
-    if (route.query.tema) return;
-    const stored = sessionStorage.getItem('seasonalThemeOverride');
-    if (stored === 'nenhum') {
-      overrideTheme.value = null;
-    } else if (stored && themeIds.includes(stored as SeasonalThemeId)) {
-      overrideTheme.value = stored as SeasonalThemeId;
-    }
-  });
 
   const activeTheme = computed<SeasonalThemeId | null>(() => {
     if (overrideTheme.value) return overrideTheme.value;
