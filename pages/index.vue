@@ -3,29 +3,46 @@ definePageMeta({
   key: (route) => route.fullPath,
 });
 
+import miadoAudio from '@/assets/audio/miado1.mp3';
+
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
 const isShortcutModalOpen = ref(false);
 const isMobileDevice = ref(false);
-const showDonationTooltip = ref(false);
+const showGameTooltip = ref(false);
 
 const themeIcon = computed(() => {
   return getTheme.value === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 });
 
-const checkAndShowDonationTooltip = () => {
+const checkAndShowGameTooltip = () => {
   if (process.client) {
-    const lastSeenTimestamp = localStorage.getItem('donationTooltipLastSeen');
-    const now = Date.now();
-    const oneWeekInMs = 7 * 24 * 60 * 60 * 1000; // 7 dias em milissegundos
-    
-    // Mostra tooltip se nunca foi visto ou se passou mais de uma semana
-    if (!lastSeenTimestamp || (now - parseInt(lastSeenTimestamp)) > oneWeekInMs) {
-      showDonationTooltip.value = true;
-      localStorage.setItem('donationTooltipLastSeen', now.toString());
+    const lastSeenDate = localStorage.getItem('gameTooltipLastSeenDate');
+    const today = new Date().toDateString();
+
+    // Mostra tooltip apenas na primeira vez que a pessoa abre a página no dia
+    if (lastSeenDate !== today) {
+      showGameTooltip.value = true;
+      localStorage.setItem('gameTooltipLastSeenDate', today);
+
+      const audio = new Audio(miadoAudio);
+      audio.volume = 0.5;
+      audio.play().catch(() => {
+        // Autoplay bloqueado pelo navegador: toca no primeiro gesto do usuário
+        const playOnFirstInteraction = () => {
+          audio.play().catch(() => {});
+          document.removeEventListener('click', playOnFirstInteraction);
+          document.removeEventListener('touchstart', playOnFirstInteraction);
+          document.removeEventListener('keydown', playOnFirstInteraction);
+        };
+        document.addEventListener('click', playOnFirstInteraction, { once: true });
+        document.addEventListener('touchstart', playOnFirstInteraction, { once: true });
+        document.addEventListener('keydown', playOnFirstInteraction, { once: true });
+      });
+
       // Auto-hide tooltip after 5 seconds
       setTimeout(() => {
-        showDonationTooltip.value = false;
+        showGameTooltip.value = false;
       }, 5000);
     }
   }
@@ -35,15 +52,15 @@ onMounted(() => {
   const checkMobile = () => {
     isMobileDevice.value = window.innerWidth <= 768;
   };
-  
+
   checkMobile();
   window.addEventListener('resize', checkMobile);
-  
-  // Show donation tooltip after 2 seconds
+
+  // Show game tooltip after 2 seconds
   setTimeout(() => {
-    checkAndShowDonationTooltip();
+    checkAndShowGameTooltip();
   }, 2000);
-  
+
   onUnmounted(() => {
     window.removeEventListener('resize', checkMobile);
   });
@@ -63,6 +80,10 @@ const closeShortcutModal = () => {
  */
 const goToDonations = () => {
   navigateTo('/donations', { external: true });
+};
+
+const openChinelaDestroyer = () => {
+  window.open('https://chinela-destroyer.vercel.app/', '_blank', 'noopener,noreferrer');
 };
 
 </script>
@@ -111,12 +132,21 @@ const goToDonations = () => {
 
     <div class="floating-container-bottom">
       <Transition name="tooltip">
-        <div v-if="showDonationTooltip" class="donation-tooltip">
-          Apoie o Pergunte ao Polvo! ❤️🐙
+        <div v-if="showGameTooltip" class="game-tooltip">
+          Jogue Chinela Destroyer <i class="fas fa-cat" /> 
           <div class="tooltip-arrow"></div>
         </div>
       </Transition>
-      
+
+      <button
+        type="button"
+        class="floating-button game-button"
+        aria-label="Jogar Chinela Destroyer"
+        @click="openChinelaDestroyer"
+      >
+        <img src="@/assets/img/chinela.png" alt="Chinela Destroyer" />
+      </button>
+
       <button
         type="button"
         class="floating-button donation-button"
