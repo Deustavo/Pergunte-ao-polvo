@@ -163,3 +163,9 @@ footer {
     }
   }
 }
+
+// Tema sazonal: halloween
+html.season-halloween body {
+  background: url('~/assets/img/halloween-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}

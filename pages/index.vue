@@ -7,6 +7,8 @@ import miadoAudio from '@/assets/audio/miado1.mp3';
 
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
+// @ts-ignore - Auto-imported by Nuxt
+const { grinchVariantActive } = useSeasonalTheme();
 const isShortcutModalOpen = ref(false);
 const isMobileDevice = ref(false);
 const showGameTooltip = ref(false);
@@ -14,6 +16,11 @@ const showGameTooltip = ref(false);
 const themeIcon = computed(() => {
   return getTheme.value === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 });
+
+const headerTitle = computed(() => grinchVariantActive.value ? 'Pergunte ao Grinch!' : 'Pergunte ao Polvo!');
+const headerDescription = computed(() => grinchVariantActive.value
+  ? 'Coloque abaixo as opções e o grinch decidirá por você:'
+  : 'Coloque abaixo as opções e o polvo decidirá por você:');
 
 const checkAndShowGameTooltip = () => {
   if (process.client) {
@@ -92,15 +99,15 @@ const openChinelaDestroyer = () => {
   <div>
     <header class="app-header">
       <ImagePolvo />
-      <h1>Pergunte ao Polvo!</h1>
+      <h1>{{ headerTitle }}</h1>
       <!-- <NuxtLink class="app-header-description about-link" to="/about">O que é o pergunte ao polvo?</NuxtLink> -->
       <!-- <p class="app-header-description">Se precisar fazer uma escolha difícil, pergunte ao polvo!<br>Ele saberá a resposta certa.</p> -->
-      <p class="app-header-description">Coloque abaixo as opções e o polvo decidirá por você:</p>
+      <p class="app-header-description">{{ headerDescription }}</p>
     </header>
     <FormPolvoDefault />
     <!-- <FormPolvoMultiChoices /> -->
     <footer>
-      <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo">Gustavo Andrade</a></p>
+      <p>Desenvolvido por <a class="about-link" href="https://github.com/Deustavo" target="_blank" rel="noopener noreferrer">Gustavo Andrade</a></p>
       <p>❤️ Dedicado à moonjoume ❤️</p>
     </footer>
 
@@ -156,8 +163,7 @@ const openChinelaDestroyer = () => {
         <i class="fas fa-heart" />
       </button>
     </div>
-    <!-- <SnowFall /> -->
-    <!-- <ConfettiFall /> -->
+    <SeasonalDecorations />
   </div>
 </template>
 

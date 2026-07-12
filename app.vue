@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
+import { seasonalThemes } from '@/settings/seasonalThemes';
 
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme } = useTheme();
+// @ts-ignore - Auto-imported by Nuxt
+const { activeTheme } = useSeasonalTheme();
 
 const route = useRoute();
 const pageKey = computed(() => route.fullPath);
+
+const seasonClasses = seasonalThemes.map((theme) => `season-${theme.id}`);
 
 /**
  * Sync theme with html and body elements
@@ -13,12 +18,19 @@ const pageKey = computed(() => route.fullPath);
 watchEffect(() => {
   if (process.client) {
     const themeClass = `${getTheme.value}-theme`;
-    
+
     document.documentElement.classList.remove('light-theme', 'dark-theme');
     document.documentElement.classList.add(themeClass);
-    
+
     document.body.classList.remove('light-theme', 'dark-theme');
     document.body.classList.add(themeClass);
+
+    document.documentElement.classList.remove(...seasonClasses);
+    document.body.classList.remove(...seasonClasses);
+    if (activeTheme.value) {
+      document.documentElement.classList.add(`season-${activeTheme.value}`);
+      document.body.classList.add(`season-${activeTheme.value}`);
+    }
   }
 });
 

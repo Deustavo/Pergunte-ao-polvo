@@ -1,5 +1,7 @@
 <script setup>
-    import { computed } from 'vue'; 
+    import { computed, watchEffect } from 'vue';
+    import { useSeasonalTheme, grinchVariantActive } from '@/composables/useSeasonalTheme';
+
     import Polvo from '@/assets/img/polvo.png';
     import PolvoDefault from '@/assets/img/polvo-default.png';
     import PolvoBruxa from '@/assets/img/polvo-bruxa.png';
@@ -15,46 +17,65 @@
     import PolvoFrank from '@/assets/img/polvo-frank.png';
     import PolvoCarnaval1 from '@/assets/img/polvo-carnaval_1.png';
 
-    /**
-     * Não utilizado durante o natal
-     */
-    const selectRandomImage = computed(() => {
-        let selectedImage = Polvo;
+    import PolvoFantasma from '@/assets/img/polvo-fantasma.png';
+    import PolvoGrinch from '@/assets/img/polvo-grinch.png';
+    import PolvoRena from '@/assets/img/polvo-rena.png';
+    import PolvoGelo from '@/assets/img/polvo-gelo.png';
+    import PolvoLuzes from '@/assets/img/polvo-luzes.png';
+    import PolvoCoelho from '@/assets/img/polvo-coelho.png';
 
-        const images = [
-            PolvoDefault,
-            PolvoBruxa,
-            PolvoCowboy,
-            PolvoMarinheiro,
-            PolvoNerd,
-            PolvoNiver,
-            PolvoPirata,
-            PolvoRealista,
-            PolvoNoel,
-            PolvoFred,
-            PolvoAbobora,
-            PolvoFrank,
-            PolvoCarnaval1
-        ];
+    const { activeTheme } = useSeasonalTheme();
 
-        if (Math.random() < 0.4) {
-            const indexImage = Math.floor(Math.random() * images.length);
-            selectedImage =  images[indexImage];
-        }
+    const defaultPool = [
+        PolvoDefault,
+        PolvoBruxa,
+        PolvoCowboy,
+        PolvoMarinheiro,
+        PolvoNerd,
+        PolvoNiver,
+        PolvoPirata,
+        PolvoRealista,
+        PolvoNoel,
+        PolvoFred,
+        PolvoAbobora,
+        PolvoFrank,
+        PolvoCarnaval1,
+    ];
 
-        return selectedImage;
+    const halloweenPool = [PolvoBruxa, PolvoRealista, PolvoFred, PolvoAbobora, PolvoFrank, PolvoFantasma];
+    const natalPool = [PolvoNoel, PolvoGrinch, PolvoRena, PolvoRealista, PolvoGelo, PolvoLuzes];
+
+    const pickRandom = (images) => images[Math.floor(Math.random() * images.length)];
+
+    const selectedImage = computed(() => {
+        if (activeTheme.value === 'halloween') return pickRandom(halloweenPool);
+        if (activeTheme.value === 'natal') return pickRandom(natalPool);
+        if (activeTheme.value === 'pascoa') return PolvoCoelho;
+
+        if (Math.random() < 0.4) return pickRandom(defaultPool);
+        return Polvo;
+    });
+
+    watchEffect(() => {
+        grinchVariantActive.value = activeTheme.value === 'natal' && selectedImage.value === PolvoGrinch;
     });
 </script>
 
 <template>
-    <div class="polvo-bg">
-        <img
-            class="polvo-img"
-            :src="selectRandomImage"
-            alt="Polvo"
-        />
-        <PolvoEyes />
-    </div>
+    <CagePrank v-if="activeTheme === 'primeiro-de-abril'" />
+    <ClientOnly v-else>
+        <div class="polvo-bg">
+            <img
+                class="polvo-img"
+                :src="selectedImage"
+                alt="Polvo"
+            />
+            <PolvoEyes />
+        </div>
+        <template #fallback>
+            <div class="polvo-bg"></div>
+        </template>
+    </ClientOnly>
 </template>
 
 <style scoped lang="scss">
