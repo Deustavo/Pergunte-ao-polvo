@@ -44,29 +44,32 @@ export const seasonalThemes: SeasonalThemeConfig[] = [
   {
     id: 'primeiro-de-abril',
     label: '1º de Abril',
-    dateRange: { type: 'fixed', start: { month: 4, day: 1 }, end: { month: 4, day: 1 } },
+    dateRange: { type: 'fixed', start: { month: 4, day: 1 }, end: { month: 4, day: 7 } },
+    notes: 'Uma semana a partir do dia 1º',
   },
   {
     id: 'halloween',
     label: 'Halloween',
-    dateRange: { type: 'fixed', start: { month: 10, day: 25 }, end: { month: 11, day: 1 } },
+    dateRange: { type: 'fixed', start: { month: 10, day: 1 }, end: { month: 10, day: 31 } },
+    notes: 'Mês de outubro inteiro',
   },
   {
     id: 'natal',
     label: 'Natal',
-    dateRange: { type: 'fixed', start: { month: 12, day: 15 }, end: { month: 12, day: 26 } },
+    dateRange: { type: 'fixed', start: { month: 12, day: 1 }, end: { month: 12, day: 31 } },
+    notes: 'Mês de dezembro inteiro',
   },
   {
     id: 'carnaval',
     label: 'Carnaval',
-    dateRange: { type: 'easter-offset', startOffsetDays: -50, endOffsetDays: -47 },
-    notes: 'Sábado a Terça antes da Quarta de Cinzas (47 dias antes da Páscoa)',
+    dateRange: { type: 'easter-offset', startOffsetDays: -53, endOffsetDays: -47 },
+    notes: 'Uma semana terminando na Terça de Carnaval (47 dias antes da Páscoa)',
   },
   {
     id: 'pascoa',
     label: 'Páscoa',
-    dateRange: { type: 'easter-offset', startOffsetDays: -7, endOffsetDays: 0 },
-    notes: 'Semana anterior até o Domingo de Páscoa',
+    dateRange: { type: 'easter-offset', startOffsetDays: -6, endOffsetDays: 0 },
+    notes: 'Uma semana terminando no Domingo de Páscoa',
   },
 
   // Para adicionar um novo evento, copie um bloco acima e ajuste id/label/dateRange.
