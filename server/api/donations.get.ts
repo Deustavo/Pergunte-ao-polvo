@@ -5,6 +5,7 @@
  */
 
 import { getLivePixAccessToken, clearLivePixTokenCache } from '../utils/livepix-auth';
+import { filterHiddenDonations } from '../utils/hidden-donations';
 
 const LIVEPIX_API_BASE = 'https://api.livepix.gg/v2';
 
@@ -101,8 +102,10 @@ export default defineEventHandler(async (event): Promise<{ data: DonationItem[] 
     message: m.message ?? null,
   }));
 
-  const merged = [...fromPayments, ...fromMessages].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  const merged = filterHiddenDonations(
+    [...fromPayments, ...fromMessages].sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    ),
   );
 
   const data = merged.slice(0, limit);
