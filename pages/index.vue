@@ -3,8 +3,6 @@ definePageMeta({
   key: (route) => route.fullPath,
 });
 
-import miadoAudio from '@/assets/audio/miado1.mp3';
-
 // @ts-ignore - Auto-imported by Nuxt
 const { getTheme, toggleTheme } = useTheme();
 // @ts-ignore - Auto-imported by Nuxt
@@ -31,21 +29,6 @@ const checkAndShowGameTooltip = () => {
     if (lastSeenDate !== today) {
       showGameTooltip.value = true;
       localStorage.setItem('gameTooltipLastSeenDate', today);
-
-      const audio = new Audio(miadoAudio);
-      audio.volume = 0.5;
-      audio.play().catch(() => {
-        // Autoplay bloqueado pelo navegador: toca no primeiro gesto do usuário
-        const playOnFirstInteraction = () => {
-          audio.play().catch(() => {});
-          document.removeEventListener('click', playOnFirstInteraction);
-          document.removeEventListener('touchstart', playOnFirstInteraction);
-          document.removeEventListener('keydown', playOnFirstInteraction);
-        };
-        document.addEventListener('click', playOnFirstInteraction, { once: true });
-        document.addEventListener('touchstart', playOnFirstInteraction, { once: true });
-        document.addEventListener('keydown', playOnFirstInteraction, { once: true });
-      });
 
       // Auto-hide tooltip after 5 seconds
       setTimeout(() => {
@@ -89,8 +72,8 @@ const goToDonations = () => {
   navigateTo('/donations', { external: true });
 };
 
-const openChinelaDestroyer = () => {
-  window.open('https://chinela-destroyer.vercel.app/', '_blank', 'noopener,noreferrer');
+const openJogos = () => {
+  window.open('https://gustavoandrade.vercel.app/jogos', '_blank', 'noopener,noreferrer');
 };
 
 </script>
@@ -140,7 +123,7 @@ const openChinelaDestroyer = () => {
     <div class="floating-container-bottom">
       <Transition name="tooltip">
         <div v-if="showGameTooltip" class="game-tooltip">
-          Jogue Chinela Destroyer <i class="fas fa-cat" /> 
+          Veja meus jogos!
           <div class="tooltip-arrow"></div>
         </div>
       </Transition>
@@ -148,10 +131,10 @@ const openChinelaDestroyer = () => {
       <button
         type="button"
         class="floating-button game-button"
-        aria-label="Jogar Chinela Destroyer"
-        @click="openChinelaDestroyer"
+        aria-label="Ver meus jogos"
+        @click="openJogos"
       >
-        <img src="@/assets/img/chinela.png" alt="Chinela Destroyer" />
+        <img src="@/assets/img/pera.png" alt="Meus jogos" />
       </button>
 
       <button
