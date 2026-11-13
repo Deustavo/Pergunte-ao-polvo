@@ -10,7 +10,7 @@ const { activeTheme } = useSeasonalTheme();
   <img
     v-if="activeTheme === 'halloween'"
     class="teia-img"
-    src="@/assets/img/teia.png"
+    src="/img/teia.webp"
     alt=""
   />
 </template>

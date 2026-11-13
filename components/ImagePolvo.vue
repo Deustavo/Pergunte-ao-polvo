@@ -2,27 +2,28 @@
     import { computed, watchEffect } from 'vue';
     import { useSeasonalTheme, grinchVariantActive } from '@/composables/useSeasonalTheme';
 
-    import Polvo from '@/assets/img/polvo.png';
-    import PolvoDefault from '@/assets/img/polvo-default.png';
-    import PolvoBruxa from '@/assets/img/polvo-bruxa.png';
-    import PolvoCowboy from '@/assets/img/polvo-cowboy.png';
-    import PolvoMarinheiro from '@/assets/img/polvo-marinheiro.png';
-    import PolvoNerd from '@/assets/img/polvo-nerd.png';
-    import PolvoNiver from '@/assets/img/polvo-niver.png';
-    import PolvoPirata from '@/assets/img/polvo-pirata.png';
-    import PolvoRealista from '@/assets/img/polvo-realista.png';
-    import PolvoNoel from '@/assets/img/polvo-noel.png';
-    import PolvoFred from '@/assets/img/polvo-fred.png';
-    import PolvoAbobora from '@/assets/img/polvo-abobora.png';
-    import PolvoFrank from '@/assets/img/polvo-frank.png';
-    import PolvoCarnaval1 from '@/assets/img/polvo-carnaval_1.png';
+    // Imagens em public/img (fora do bundle) para o Nuxt não gerar prefetch de todas
+    const Polvo = '/img/polvo.webp';
+    const PolvoDefault = '/img/polvo-default.webp';
+    const PolvoBruxa = '/img/polvo-bruxa.webp';
+    const PolvoCowboy = '/img/polvo-cowboy.webp';
+    const PolvoMarinheiro = '/img/polvo-marinheiro.webp';
+    const PolvoNerd = '/img/polvo-nerd.webp';
+    const PolvoNiver = '/img/polvo-niver.webp';
+    const PolvoPirata = '/img/polvo-pirata.webp';
+    const PolvoRealista = '/img/polvo-realista.webp';
+    const PolvoNoel = '/img/polvo-noel.webp';
+    const PolvoFred = '/img/polvo-fred.webp';
+    const PolvoAbobora = '/img/polvo-abobora.webp';
+    const PolvoFrank = '/img/polvo-frank.webp';
+    const PolvoCarnaval1 = '/img/polvo-carnaval_1.webp';
 
-    import PolvoFantasma from '@/assets/img/polvo-fantasma.png';
-    import PolvoGrinch from '@/assets/img/polvo-grinch.png';
-    import PolvoRena from '@/assets/img/polvo-rena.png';
-    import PolvoGelo from '@/assets/img/polvo-gelo.png';
-    import PolvoLuzes from '@/assets/img/polvo-luzes.png';
-    import PolvoCoelho from '@/assets/img/polvo-coelho.png';
+    const PolvoFantasma = '/img/polvo-fantasma.webp';
+    const PolvoGrinch = '/img/polvo-grinch.webp';
+    const PolvoRena = '/img/polvo-rena.webp';
+    const PolvoGelo = '/img/polvo-gelo.webp';
+    const PolvoLuzes = '/img/polvo-luzes.webp';
+    const PolvoCoelho = '/img/polvo-coelho.webp';
 
     const { activeTheme } = useSeasonalTheme();
 
@@ -70,6 +71,7 @@
                 class="polvo-img"
                 :src="selectedImage"
                 alt="Polvo"
+                decoding="async"
             />
             <PolvoEyes />
         </div>

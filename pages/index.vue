@@ -134,7 +134,7 @@ const openJogos = () => {
         aria-label="Ver meus jogos"
         @click="openJogos"
       >
-        <img src="@/assets/img/pera.png" alt="Meus jogos" />
+        <img src="/img/pera.webp" alt="Meus jogos" />
       </button>
 
       <button

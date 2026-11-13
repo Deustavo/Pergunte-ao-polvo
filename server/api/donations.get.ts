@@ -110,5 +110,8 @@ export default defineEventHandler(async (event): Promise<{ data: DonationItem[] 
 
   const data = merged.slice(0, limit);
 
+  // Let the Vercel CDN share this response across tabs instead of invoking the function every poll
+  setResponseHeader(event, 'cache-control', 'public, s-maxage=30, stale-while-revalidate=60');
+
   return { data };
 });

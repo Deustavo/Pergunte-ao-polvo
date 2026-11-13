@@ -73,6 +73,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  routeRules: {
+    // public/img has no hashed filenames: renaming the file is required to replace an image
+    '/img/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+    // ?tema= is a separate cache key and is passed to the SSR so theme previews keep working
+    '/': { isr: { expiration: 3600, allowQuery: ['tema'], passQuery: true } },
+    '/about': { isr: 86400 },
+  },
   modules: [
     "nuxt-vercel-analytics",
     "@nuxtjs/robots",

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onUnmounted } from 'vue';
-import Cage from '@/assets/img/cage.png';
-import Polvo from '@/assets/img/polvo-default.png';
+const Cage = '/img/cage.webp';
+const Polvo = '/img/polvo-default.webp';
 
 const SHAKE_MS = 480;
 

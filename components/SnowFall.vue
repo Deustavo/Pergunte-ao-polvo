@@ -6,7 +6,7 @@
     ></div>
     <img
       class="footerSnow"
-      src="../assets/img/footerSnow.png"
+      src="/img/footerSnow.webp"
     />
 </template>
 
