@@ -81,7 +81,6 @@ export default defineNuxtConfig({
     '/about': { isr: 86400 },
   },
   modules: [
-    "nuxt-vercel-analytics",
     "@nuxtjs/robots",
     "@nuxtjs/sitemap"
   ]
